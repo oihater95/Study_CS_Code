@@ -20,10 +20,10 @@
   - 순서를 가질 수 있다.
   - **특정 위치의 데이터를 가리킬 수 있다.** (index 접근 가능 == 순서가 있다)
 - 종류
-  - 리스트(list)
-  - 튜플(tuple)
-  - 레인지(range)
-  - 문자형(string)
+  - 리스트(list) : mutable
+  - 튜플(tuple) : immutable
+  - 레인지(range) : immutable
+  - 문자형(string) : immutable
   - 바이너리(binary)
 
 ### List
@@ -293,8 +293,8 @@ print(
 
 ## Non-Sequence형 Container
 
-- 셋(set)
-- 딕셔너리(dictionary)
+- 셋(set) : mutable
+- 딕셔너리(dictionary) : mutable
 
 
 
@@ -509,13 +509,13 @@ print(set(d))
 
 
 
-### 데이터 분류
+## 데이터 분류
 
 > `mutable` vs. `immutable`
 
 
 
-#### 변경 불가능한(`immutable`) 데이터
+### 변경 불가능한(`immutable`) 데이터
 
 - 리터럴(literal)
   - 숫자(Number)
@@ -555,7 +555,7 @@ print(num1, num2)
 
 
 
-#### 변경 가능한(`mutable`) 데이터
+### 변경 가능한(`mutable`) 데이터
 
 - `list`
 - `dict`

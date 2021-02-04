@@ -186,9 +186,68 @@
 
 
 
+### Component
+
+모르는 것 위주로 추가 예정
+
+- display-1: 글씨 크기(Heading)
+- Grid (row-cols-n): col-n은 12칸 중 n칸 배분이지만 row-cols-n은 1개의 row에 col을 n개 생성한다는 의미
+
+```html
+<section class="row g-3 row-cols-sm-1 row-cols-md-2 row-cols-lg-4"> <!-- grid -->
+        <a class="text-decoration-none text-dark" href="">
+          <article class="card">
+            <img class="img-fluid card-img-top" src="images/buds.jpg" alt="buds image">
+            <div class="card-body">
+              <h3 class="card-title fs-5 p-1">Buds</h3>
+              <p class="card-text">179,000</p>
+            </div>
+          </article>
+        </a>
+    
+=
+
+ <section class="row"> <!-- grid -->
+        <!-- card Component 사용 .card, .card-img-top, card-body -->
+        <a class="text-decoration-none text-dark col-md-6 col-lg-3 g-2" href="">
+          <article class="card">
+            <img class="img-fluid card-img-top" src="images/buds.jpg" alt="buds image">
+            <div class="card-body">
+              <h3 class="card-title fs-5 p-1">Buds</h3>
+              <p class="card-text">179,000</p>
+            </div>
+          </article>
+        </a>    
+```
+
+
+
+- gutter: grid 사이 간격(padding)
+
+```css
+<section class="row g-3 "> <!-- grid -->
+    
+        <article class="col-12 col-md-6 col-lg-3">
+          <div class="card">
+            <img class="img-fluid card-img-top" src="images/buds.jpg" alt="buds image">
+            <div class="card-body">
+              <h3 class="card-title fs-5 p-1">Buds</h3>
+              <p class="card-text">179,000</p>
+            </div>
+          </div>
+        </article>
+```
+
+
+
+- img-fluid: 반응형 이미지
+- container-fluid: 반응형 컨테이너
+- a태그의 text-decoration-none: 밑줄 삭제
+
 ## Grid System
 
 - 부트스트랩의 grid system 은 containers, rows 그리고 columns 를 사용해서 컨텐츠를 레이아웃하고 정렬한다.
+- d-flex와 혼용하지 않는게 좋다.
 - 12개의 column 가진다 => 12가 약수가 많기 때문에
 - 구조
   - .container > .row > col-*
@@ -232,6 +291,7 @@
 ### offset
 
 - 지정한 offset 만큼의 column 공간 무시하고 다음 공간부터 컨텐츠 적용
+- 같은 라인에 offset과 col구문이 있으면 offset이 먼저 적용
 
 ```css
 <div class="row"> /*4칸 띄고 시작*/
@@ -239,6 +299,21 @@
       <div class="box col-4">2</div>
 </div>
 ```
+
+```css
+<div class="row">
+      <div class="item col-4 offset-md-4 offset-lg-7 col-lg-5">
+        <p>item1</p>
+      </div>
+      <div class="item col-4 offset-4 offset-md-0 offset-lg-2 col-lg-8">
+        <p>item2</p>
+      </div>
+    </div>
+```
+
+
+
+- btn: 버튼
 
 
 
@@ -288,4 +363,14 @@
 
 ### 크기
 
-: xs < sm < md < lg < xl < xxl
+- xs(none): 0 이상
+
+- sm: 576 이상
+
+- md: 768px 이상
+
+- lg: 992px 이상
+
+- xl: 1200px 이상
+
+- xxl: 1400px 이상

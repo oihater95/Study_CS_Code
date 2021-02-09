@@ -1,5 +1,53 @@
 # Algorithm & List 01
 
+## 입출력
+
+### 입력
+
+- `input()`: string 자료형으로 입력 받음
+- `split()`:  default = 공백, ()기준으로 나눔
+- `map()`: 자료형 변환해서 받음
+
+```python
+# 문자열 입력
+S = input()
+
+# 다수 입력
+A, B = input().split()
+
+# 정수 입력
+num = int(input())
+
+# 다수의 정수 입력
+num1, num2 = map(int, input().split())
+
+# 리스트로 받기
+arr = list(map(int, input().split()))
+
+```
+
+
+
+### 출력
+
+- `.format()`: fstring과 동일
+- `''.join()`: str형 을 ''기준으로 합침 
+
+```python
+# fstring 대신 format
+print('{} {}'.format(a, b))
+
+# join
+a = ['1', '2', '3', '4']
+' '.join(a)
+>>> 1 2 3 4 
+
+a = [1, 2, 3, 4]  # join은 str만 가능 => map으로 str
+' '.join(map(str, a))
+```
+
+
+
 ## 알고리즘
 
 > 어떤 문제를 해결하기 위한 절차

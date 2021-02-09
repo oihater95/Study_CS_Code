@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Position</title>
+</head>
+<style>
+  div{
+    height: 100px;  /* div(block) style */
+    width: 100px;  /* div style */
+    background-color: purple;  /* div style */
+    color: white;  /* 여기서 부터 contents(text) style */
+    line-height: 100px;  /* 행간(줄간격), 위 아래 50px*/
+    text-align: center;  /* 가운데 정렬 */
+  }
+
+  .relative{
+    /* 원래 static일 때 있어야 할 위치를 기준으로 움직임 */
+    position: relative;
+    top: 100px;
+    left: 100px;
+  }
+</style>
+<body>
+  <div>static</div>  <!-- static은 top, bottom, left, right로 못 움직임 -->
+  <div class="relative">relative</div> 
+</body>
+</html>

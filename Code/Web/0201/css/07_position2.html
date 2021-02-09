@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Position</title>
+</head>
+<style>
+  div{
+    height: 100px;  /* div(block) style */
+    width: 100px;  /* div style */
+    background-color: purple;  /* div style */
+    color: white;  /* 여기서 부터 contents(text) style */
+    line-height: 100px;  /* 행간(줄간격), 위 아래 50px*/
+    text-align: center;  /* 가운데 정렬 */
+  }
+
+  .parent{
+    position: relative;
+    margin: 0 auto;
+    width: 300px;
+    height: 300px;
+  }
+
+  .abs{
+    /* 원래 있던 자리 비워주고 이동 */
+    position: absolute;
+    top: 100px;
+    background-color: seagreen;
+  }
+
+  .rel{
+    /* 원래 있던 자리도 차지하면서 이동 */
+    position: relative;
+    top: 100px;
+    background-color: steelblue;
+  }
+
+  .sibling{
+    width: 200px;
+    height: 100px;
+    background-color: hotpink;
+  }
+
+
+  .parent-static{
+    position: static;
+    margin: 0 auto;
+  }
+
+  .child {
+    /* 특별한 (static이 아닌)부모 요소가 없으면 
+       body 기준으로 움직인다 
+       static 아닌 부모 요소가 있으면 그 부모를
+       기준으로 움직인다. 
+       static이 아닌 부모가 여러 개가 있으면
+       가장 인접한 부모를 기준으로 한다.*/
+    position: absolute;
+    background-color: black;
+    top: 50px;
+    left: 50px;
+  }
+
+  .fixed {
+    /* 스크롤해도 위치 고정(카톡 입력창처럼) */
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+  }
+
+</style>
+<body>
+  <div class=fixed>Fixed</div>
+
+  <div class="parent">
+    부모(relative)
+    <div class="child">
+      <!-- relative부모 좌상단 기준 -->
+      자식(absolute)
+    </div>
+  </div>  
+
+
+  <div class="parent-static">
+    부모(static)
+    <div class="child" style="color:crimson">
+      <!-- html 좌상단 기준 -->
+      자식(absolute)
+    </div>
+  </div>
+
+  <!-- div.parent>div.abs+div.sibling --> 
+  <div class="parent" style="background-color: khaki;">
+    <div class="abs">abs형</div>
+    <div class="sibling">동생</div>
+  </div>
+
+  <div class="parent" style="background-color: khaki;">
+    <div class="rel">rel형</div>
+    <div class="sibling">동생</div>
+  </div>
+
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque laborum assumenda accusantium fuga eaque est neque odit sint sit officia, quas quo cumque, ducimus ipsam minima magni repellat quisquam ab?</p>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, fugiat neque? Delectus soluta, reiciendis quibusdam atque culpa quidem earum velit est commodi, veniam maiores quam perspiciatis aspernatur quis a praesentium.</p>
+  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium, necessitatibus numquam! Quae vel temporibus accusantium dolorem, mollitia cumque nulla veniam minus dolores ratione, nisi expedita nemo qui cupiditate voluptatibus reprehenderit.</p>
+  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate nemo alias nulla nihil quaerat quam consectetur excepturi nisi perferendis perspiciatis assumenda vero ratione saepe iure debitis, veniam sunt nobis officia.</p>
+  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis nesciunt, odio voluptates eum possimus dolor laboriosam voluptas ullam obcaecati esse, cum libero fugit veniam commodi? Rerum corporis aliquam iure. Ipsa?</p>
+</body>
+</html>
+
+<!-- absolute는 위에 떠있다고 보면 됨 -->

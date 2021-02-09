@@ -1,0 +1,87 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+h4 {
+  font-size: 20px;
+  font-weight: bold;
+  font-family: Arial;
+}
+
+p {
+  font-family: Arial;
+}
+
+.container {
+  width: 1000px;
+  margin: 30px auto;
+}
+
+/* card 요소 중 부모 요소 flex container */
+.card{  
+  display: flex;
+  flex-direction: column;  /* 메인축은 세로축 => 세로축 정렬시 justify */
+  width: 700px;
+  border: 2px dashed black;
+  justify-content: space-between;  /* nav와 footer는 위아래 끝에 붙어있어야함 */
+  margin: 0 auto;
+}
+
+.card-nav{
+  display: flex;  /* card-nav의 자식 h2를 control하기 위해 card-nav를 flex로 */
+  justify-content: center;  /* card-nav의 메인축은 가로(default) */
+  background-color: green;
+}
+
+.card-header{
+  padding: 18px;
+}
+
+.card-header-img{
+  width: 100%;
+  height: 330px;
+  display: block;  /* 공백제거 */
+}
+
+.card-header-description{
+  /* 제주도
+    성산 일출봉
+  가운데 정렬하기 위해 description 자체를 flex container로   
+    */
+  display: flex;
+  flex-direction: column;  /* 메인축이 세로 */
+  align-items: center;  /* 좌우 수평 정렬 => 교차축 정렬 */
+  /* 교차축 입장에서는 한줄이라 items 사용 한줄일 때는 content X */
+  color: white;
+  background-color: darkgreen;
+  height: 70px;
+  justify-content: center;  /* 수직 정렬 */
+}
+
+.card-body{
+  padding: 18px;
+}
+
+.card-body-title{
+  display: flex;
+  align-items: center;  /* 수직 중앙 정렬 */
+  justify-content: space-between;  /* 요소 두개 양 쪽 끝에 두기 */
+}
+
+.card-body-description{
+  margin-top: 10px;
+  padding: 10px;
+  background-color: wheat;
+}
+
+.card-footer{
+  display: flex;
+  background-color: darkolivegreen;
+  height: 40px;
+  justify-content: flex-end;  /* 오른쪽 끝으로 이동 */
+  align-items: center;  /* 수직 중앙 정렬 */
+  color: white;
+  padding-right: 10px;
+}

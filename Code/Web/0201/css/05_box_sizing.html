@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box{
+      width: 100px;
+      margin: 10px auto;
+      padding: 20px;
+      border: 1px solid black;
+      color: white;  /* 텍스트 색상 */
+      text-align: center;  /* 텍스트 가운데 정렬 */
+      background-color: blueviolet;
+    }
+
+    .box-sizing{
+      box-sizing: border-box;
+      margin-top: 50px;  /* 이론상 위 박스 10px + 아래 박스 50px로 60px가 되어야하지만
+      마진 상쇄가 일어나 위 박스 10px이 상쇄되어 50px만 나타남 */
+    }
+
+  </style>
+</head>
+<body>
+  <div class="box">content-box</div>
+  <div class="box box-sizing">border-box</div>
+</body>
+</html>

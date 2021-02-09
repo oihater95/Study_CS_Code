@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    h2 {
+      color: darkviolet !important;
+    }
+
+    p {
+      color: orange;
+    }
+
+    .blue{
+      color: blue;
+    }
+    
+    .green {
+      color: green;
+    }
+
+    #red {
+      color: red;
+    }
+
+
+  </style>
+</head>
+<body>
+  <p>1</p>  <!-- 요소 선택자 스타일 -->
+  <p class="blue">2</p>  <!-- 클래스 선택자 스타일 -->
+  <p class="blue green">3</p>  <!-- green 클래스 선택자 스타일이 더 최근에 읽힘 -->
+  <p class="green blue">4</p>  <!-- green 클래스 선택자 스타일이 더 최근에 읽힘 -->
+  <p id="red" class="blue">5</p>  <!-- id 선택자 스타일 -->
+  <h2 id="red" class="blue">6</h2>  <!-- h2 선택자 스타일 !important -->
+  <p id="red" class="blue" style="color: saddlebrown;">7</p>  <!-- Inline style -->
+  <h2 id="red" class="blue" style="color: yellowgreen;">8</h2>  <!-- h2 선택자 스타일 !important -->
+</body>
+</html>
+
+<!-- 
+  class1 > class2
+
+
+
+
+ -->

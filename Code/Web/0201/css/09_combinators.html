@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 인접 형제 결합자 A + B */
+    /* 셀렉터A의 형제 요소 중 셀렉터A 바로 뒤에 위치하는 셀렉터B 요소를 선택 */
+    
+    /* p 의 형제 요소 중 p 바로 뒤에 위치하는 p 요소를 선택 */
+    p + p {
+      color: red;
+    }
+
+    /* title 클래스 요소 중 title 클래스 바로 뒤에 위치하는 ul 요소 선택 */
+    .title + ul {
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+  <!-- 인접 형제 결합자 -->
+  <p>1</p> 
+  <p>2</p>
+  <p>3</p>
+  <div>4</div>
+  <div class="title">
+    <p>5</p>
+  </div>
+  <b>얘가 있으면 아래 리스트가 파랗게 안됨!!!</b>
+  <ul>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+  </ul>
+</body>
+</html>

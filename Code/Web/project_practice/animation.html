@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      border: 2px solid black;
+      background-color:  brown;
+      width: 100px;
+      height: 100px;
+      display: inline-block;
+      animation: move, color-change;
+      animation-duration: 3s;
+      animation-fill-mode: forwards;  /* 마지막 CSS 값 적용  backward는 초기값*/
+    }
+    
+    @keyframes move { /* 마진을 조정해서 움직이는 것 */
+      0% {  /* duration 시작 */
+        margin-left: 0px;
+      }
+
+      10% {
+        margin-left: 400px;
+      }
+      
+      100% {  /* duartion 끝 */
+        margin-left: 500px;
+      }
+    }
+
+    @keyframes color-change {
+      from {
+        background-color: brown;
+      }
+
+      to {
+        background-color: darkblue;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <div></div>
+</body>
+</html>

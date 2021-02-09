@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <link rel="stylesheet" href="02_flexbox.css">
+  <title>Document</title>
+  <style>
+    .flex-container{
+      /* 정렬하려고 하는 부모 요소에 선언 => 자식요소에게만 영향, 후손요소는 X */
+      display: flex;
+
+      /* 요소들이 강제로 한줄에 배치되게 할 것인지 여부 설정 */
+      flex-wrap: wrap;  /* defalut는 nowrap => 컨테이너 벗어둔 채로 둠 */
+      /* wrap => 컨테이너 벗어나면 벗어난 요소들을 컨테이너 내부 아래쪽에 다시 정렬 
+      column일 경우 내부 오른쪽에 다시 정렬*/
+
+      /* 메인축 방향 설정, 쌓이는 방향 설정 (메인축의 방향만 바뀜, flex는 단방향) */
+      flex-direction: row-reverse;  /* right to left */
+      flex-direction: column;  /* top to bottom */
+      flex-direction: row; /* left to right */
+
+      /* 메인축 정렬 */
+      justify-content: flex-start;  /* 왼쪽으로 정렬(이동) default */
+      justify-content: flex-end;   /* 오른쪽으로 정렬(이동)되지만 row-reverse와 다름 */
+      /* row-reverse는  오른쪽에서 321 로 정렬되지만, flex-end는 오른쪽에 123으로 정렬*/
+      justify-content: center;  /* 중앙으로 이동 */
+      justify-content: space-between;  /* 요소 사이 공간 생김 양 쪽 끝 여백은 없음*/
+      justify-content: space-around;  /* 요소 양 옆에 동일한 여백 생김 여백 겹치지 않음*/
+      justify-content: space-evenly; /* 요소 양 옆에 동일한 여백 생김, 여백 겹쳐져 같은 너비가짐 */
+      justify-content: flex-start;
+
+      /* 교차축 정렬 */
+      align-items: stretch;  /* default 높이 컨테이너에 맞게 맞춰줌 */
+      align-items: flex-start;  /* 높이 작아짐, top에 정렬 */
+      align-items: baseline;  /* item들의 폰트크기가 다를 때 중앙기준 정렬 */
+      align-items: stretch;
+      /* 수직 수평 가운데 정렬 */
+      /* justify-content: center;
+      align-items: center; */
+
+      /* flex-flow: column wrap; */  /* flex-direction + flex-wrap */ 
+    }
+    /* self는 container가 아닌 개별적으로 설정 */
+    .item1{
+      align-self: flex-start;
+      order: 0; /* 0이 default */
+      flex-grow: 1;  /* 남는 공간 분배 */
+    }
+
+    .item2{
+      align-self: center;
+      order: -1; /* 0기준 왼쪽으로 이동 */
+      flex-grow: 2;
+    }
+
+    .item3{
+      align-self: flex-end;
+      order: 1; /* 0기준 오른쪽으로 이동 */
+      flex-grow: 3;
+    }
+    /* 현재 flex-grow(음수 불가) 총합이 6 => 남는 공간 6등분하고 
+    flex-grow: 1 => 1/6, flex-grow: 2 => 2/6, flex-grow: 3 => 3/6  */ 
+
+
+  </style>
+</head>
+<body>
+  <div class="base">
+    <h2>Flex</h2>
+    <hr>
+    <div class="box flex-container">  <!-- 부모 요소에 flex 부여 -->
+      <!-- flex default는 left to right 1,2,3이 가로로 쌓임 -->
+
+      <div class="item1">1</div>
+      <div class="item2">2</div>
+      <div class="item3">3</div>
+      <div class="item4">4</div>
+      <div class="item5">5</div> 
+      <div class="item6">6</div>
+      <div class="item7">7</div>
+      <div class="item8">8</div>
+      <div class="item9">9</div>
+      <div class="item10">10</div>
+      <div class="item11">11</div>
+      <div class="item12">12</div>
+   <!--    <div class="item13">13</div>
+      <div class="item12">14</div>
+      <div class="item13">15</div>
+      <div class="item13">16</div>
+      <div class="item12">17</div>
+      <div class="item13">18</div> -->
+    </div>
+  </div>
+</body>
+
+</html>
+
+<!-- 
+  flex-direction: column; => 메인축이 top-bottom 세로
+  justify-content: => 메인축이 세로축으로 바뀌었기 때문에 위 아래로 움직임
+
+-->

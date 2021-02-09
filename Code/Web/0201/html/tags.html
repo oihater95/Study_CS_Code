@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>This is Heading 1</h1>
+  <h2>Heading 2</h2>
+  <h3>Heading 3</h3>
+  <h4>Heading 4</h4>
+  <h5>Heading 5</h5>
+  <h6>Heading 6</h6>
+
+  <p>본문(paragraph)</p>
+  <ol>  <!-- 순서가 있는 리스트 Ordered list -->
+    <li>쌀을 씻는다</li>
+    <li>밥을 한다</li>
+    <li>md: 1. </li>
+  </ol>
+
+  <!-- ul>li*3 + Tab 자동완성 사용 -->
+  <ul>  <!-- 순서가 없는 리스트 Unordered list -->
+    <li>순서가 없는 리스트</li>  
+    <li>Unordered List</li>
+    <li>md: - </li>
+  </ul>
+
+  <!-- form => 하나의 박스 -->
+  <form action="">  <!-- action => attribute(key=value), 할당 저장 아님 -->
+    <input type="text">  <!-- type => attribute, Inline -->
+    <input type="text">
+    <input type="submit">  <!-- 제출확정? -->
+  </form>
+  <div>
+    <input type="text">  
+  </div>
+  <div>
+    <input type="text">
+  </div>
+  <div>
+    <input type="submit">
+  </div>
+  
+
+  <div></div>
+  <section></section>
+  <header></header>
+  <article></article>
+  <aside></aside>
+  <footer></footer>
+  <nav></nav>
+  <h2>여기까지는 Block 요소들</h2>
+
+  <hr>  <!-- 가로선 -->
+
+  <h2>여기서부터는 Inline 요소들</h2>
+
+  <a href=""></a>
+  <span></span>
+  <b></b>
+  <strong></strong>
+  <i></i>
+  <em></em>
+  <!-- b와 i는 거의 안쓴다. 모양만 낸 것이라서, 강조의미가 있는 strong과 em 사용 -->
+  
+  <a href="https://google.com">google</a>은 내가 자주 사용하는 검색엔진
+  <button>HTML</button> <em>문서</em>에서 가장 <strong>중요한</strong> 내용은 다음과 같다.
+  <br>
+  시험 성적 확인은 <a href="https://edu.ssafy.com" target="_blank">이곳</a>에서
+  <!-- target="_blank" => 새 탭에서 열기, 없으면 현재 탭에서 열기 -->
+
+  
+</body>
+</html>
+
+<!-- html 선언, Alt + B = open in browser 
+기본 tag => html, head, body, 하지만 없어도 에러 안남 
+html은 프로그래밍 언어가 아니기 때문에 
+! + Tab을 하면 기본 프레임 만들어줌 
+Tag + Tab => 자동완성
+Ctrl + Enter => 아랫 줄 추가
+Ctrl + Shift + Enter => 윗줄 추가
+Alt + 방향키 위아래 => 해당 줄 위치 옮기기
+
+Block Element = 해당 줄 면적을 모두 차지, 옆에 못 씀
+Inline Element = 해당 줄 면적을 일부 차지, 옆에 쓸 수 있음
+<br> => 줄바꿈
+
+브라우저 보고 고치는 html은 NO
+html은 초안일뿐 세세한 조정은 못한다.(글자 크기, 행간 거리 등등)
+세부사항(스타일) 조정은 CSS에서 한다.
+-->

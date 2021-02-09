@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box{
+      width: 100px;
+      height: 100px;
+      background-color: crimson;
+      border: 2px solid black;
+      color: white;
+    }
+  </style>
+
+
+  <!-- /head 바로 위에 씀 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+<body>
+  <h1>적용 되었나?</h1>
+  <h2>spacing</h2>
+  <div class="box mt-3 ms-5">1</div>  
+  <div class="box m-4">2</div>
+  <div class="box mx-auto">3</div>  <!-- 수평 중앙정렬 -->  
+  <div class="box ms-auto">4</div>  <!-- 오른쪽 정렬 -->  
+
+  <hr>
+
+  <h2>Color</h2>
+  <!-- 배경색은 bg-  -->
+  <div class="bg-primary">이건 파랑</div>
+  <div class="bg-success">이건 초록</div>
+  <div class="bg-warning">이건 노랑</div>
+  <!-- 글씨색 text-  -->
+  <p class="text-danger">이건 빨간색</p>
+  <p class="text-info">이건 하늘색</p>
+  <p class="text-secondary">이건 회색</p>
+
+  <h2>Text</h2>
+  <p class="text-start">Start aligned text on all viewport sizes.</p>
+  <p class="text-center">Center aligned text on all viewport sizes.</p>
+  <p class="text-end">End aligned text on all viewport sizes.</p>
+
+  <!-- sm 범위로 들어오면 none(사라짐), md 사이즈로 오면 block -->
+  <span class="d-block p-2 d-sm-none d-md-block bg-primary text-white">d-block</span>
+
+   <!-- md 범위로 들어오면 none(사라짐), lg 사이즈로 오면 block -->
+  <span class="d-block p-2 d-md-none d-lg-block bg-dark text-white">d-block</span>
+  <!-- sm, md, lg => grid breakpoints의 요소(크기 범위) -->
+  <!-- /body바로 위에 씀 -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</body>
+</html>

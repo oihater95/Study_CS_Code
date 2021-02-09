@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <link rel="stylesheet" href="shop.css">
+  <title>Title</title>
+
+  <style>
+    footer > a > img{
+      width: 30px;
+    }
+
+  </style>
+
+  <!-- font awesome kits -->
+  <script src="https://kit.fontawesome.com/ed6cd660e9.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <!-- 폰트 적용은 CSS 활용 -->
+  <!-- nav -->
+  <nav class="fixed-top d-flex justify-content-between align-items-center bg-white">
+    <h1 class="mb-0 p-3 fs-5">SAMSUNG</h1>
+    <div class="fw-bold">
+      <!-- text-deocoration-none: 링크 밑줄 제거 -->
+      <a class="px-3 text-dark text-decoration-none" href="">Contact</a>
+      <a class="px-3 text-dark text-decoration-none" href="">Cart</a>
+      <a class="px-3 text-dark text-decoration-none" href="">Login</a>
+    </div>
+  </nav>
+
+  <!-- container => 좌우 여백을 더 주는 반응형 / 
+    container-fluid => 좌우 여백 거의 없이 반응형 -->
+  <div class="container">
+    <!-- header -->
+    <header class="mb-3 mt-4">
+      <img class="img-fluid" src="images/main.png" alt="product image_z_flip">
+    </header>
+
+    <!-- section -->
+    <div class="text-center">
+      <h2 class="fs-5 fw-bold my-5">Our New Products</h2>
+
+      <section class="row"> <!-- grid -->
+        <!-- card Component 사용 .card, .card-img-top, card-body -->
+        <!-- md 미만 img카드 하나당 12칸, md이상 lg미만 6칸, lg이상 3칸씩 -->
+        <!-- <section row row-cols-sm-1> => sm일때 row하나에 1개(칸 아님),
+             row row-cols-md-2 => md일때 row하나에 2개
+             row row-cols-lg-4 => lg일때 row하나에 4개
+             row-cols 쓸 땐 col쓰는 요소에는 col만 써줌
+              g => gutter , column 사이 간격 gutter는 padding
+              <div class="col g-2">
+                <div class="card">
+              이런식으로 card와 나눠써야함, col g-2 card로 쓰면 카드 내부에 padding(gutter)이 들어감
+              
+              -->
+        <a class="text-decoration-none text-dark col-md-6 col-lg-3 g-2" href="">
+          <article class="card">
+            <img class="img-fluid card-img-top" src="images/buds.jpg" alt="buds image">
+            <div class="card-body">
+              <h3 class="card-title fs-5 p-1">Buds</h3>
+              <p class="card-text">179,000</p>
+            </div>
+          </article>
+        </a>
+
+        <a class="text-decoration-none text-dark col-md-6 col-lg-3 g-2" href="">
+          <article class="card">
+            <img class="img-fluid card-img-top" src="images/buds.jpg" alt="buds image">
+            <div class="card-body">
+              <h3 class="card-title fs-5 p-1">Buds</h3>
+              <p class="card-text">179,000</p>
+            </div>
+          </article>
+        </a>
+
+        <a class="text-decoration-none text-dark col-md-6 col-lg-3 g-2" href="">
+          <article class="card">
+            <img class="img-fluid card-img-top" src="images/buds.jpg" alt="buds image">
+            <div class="card-body">
+              <h3 class="card-title fs-5 p-1">Buds</h3>
+              <p class="card-text">179,000</p>
+            </div>
+          </article>
+        </a>
+
+        <a class="text-decoration-none text-dark col-md-6 col-lg-3 g-2" href="">
+          <article class="card">
+            <img class="img-fluid card-img-top" src="images/buds.jpg" alt="buds image">
+            <div class="card-body">
+              <h3 class="card-title fs-5 p-1">Buds</h3>
+              <p class="card-text">179,000</p>
+            </div>
+          </article>
+        </a>
+      </section>
+    </div>
+    
+
+    <!-- footer -->
+    <!-- image => 512*512 px -->
+    <footer class="d-flex justify-content-center align-items-center my-5 p-5">
+      <a href="">
+        <img class="img-fluid m-2" src="images/instagram.png" alt="instagram">
+      </a>
+      <a href="">
+        <img class="img-fluid m-2" src="images/facebook.png" alt="facebook">
+      </a>
+      <a href="">
+        <img class="img-fluid m-2" src="images/twitter.png" alt="twitter">
+      </a>
+
+      <!-- font awesome icon => font 이미지 -->
+      <a href="">
+        <i class="fas fa-camera fa-2x ps-2 text-dark"></i>  <!-- </i>안하면 여러개 나옴 -->
+      </a>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</body>
+</html>
+
+<!-- 이미지를 불러올 때는 원본 그대로 받아오고 그 다음 sizing -->
+<!-- Inline에서 엔터나 " "(공백)은 4px 띄어쓰기를 뜻함 -->

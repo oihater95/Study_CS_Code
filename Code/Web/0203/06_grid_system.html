@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .body{
+      height: 500px;
+    }
+
+    .box{
+      background-color: lightgoldenrodyellow;
+      border: 1px solid black;
+    }
+
+    .parent{
+      border: 1px solid black;
+      height: 600px;
+      background-color: lightpink;
+    }
+
+  </style>
+
+  <!-- /head 바로 위에 씀 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+<body>
+  <div class="container">  <!-- container 안써주면 적용안됨 -->
+    <h2 class="text-center">column</h2>
+    <div class="row">
+      <!-- 3개의 col이 12칸 중 4칸씩 가짐 -->
+      <div class="box col">1</div>
+      <div class="box col">2</div>
+      <div class="box col">3</div>
+    </div>
+    <hr>
+    <div class="row">
+      <!-- 12칸을  2칸, 8칸, 2칸 나눠가짐 -->
+      <div class="box col-2">1</div>
+      <div class="box col-8">2</div>
+      <div class="box col-2">3</div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="box col">1</div>
+      <div class="box col">2</div>
+      <div class="w-100"></div>  <!-- width 100%, clear fix랑 비슷 -->
+      <div class="box col">3</div>
+      <div class="box col">4</div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="box col-3">1</div>
+      <div class="box col-6">2</div>
+      <div class="box col-3">3</div>
+    </div>
+    <hr>
+    <br>
+    <div class="row">
+      <!-- .box.col-1{$}*13 =? $는 수 증가 -->
+      <!-- 12칸 초과 초과한 칸 밑으로 내려감 -->
+      <div class="box col-1">1</div>
+      <div class="box col-1">2</div>
+      <div class="box col-1">3</div>
+      <div class="box col-1">4</div>
+      <div class="box col-1">5</div>
+      <div class="box col-1">6</div>
+      <div class="box col-1">7</div>
+      <div class="box col-1">8</div>
+      <div class="box col-1">9</div>
+      <div class="box col-1">10</div>
+      <div class="box col-1">11</div>
+      <div class="box col-1">12</div>
+      <div class="box col-1">13</div>
+    </div>
+  
+    <hr>
+    <div class="row">
+      <!-- 12칸 초과, 칸 수 부여한 경우, 12칸 넘으면 12칸 다 못채워도 내려감 -->
+      <div class="box col-9">1</div>
+      <div class="box col-4">2</div>
+      <div class="box col-3">3</div>
+    </div>
+    <hr>
+    <h2>Grid breakpoints</h2>
+    <div class="row">
+      <!-- sm 사이즈 넘어가면 비율 8:2:2 md 넘어가면 4:4:4 -->
+      <div class="box col-2 col-sm-8 col-md-4">1</div>
+      <div class="box col-8 col-sm-2 col-md-4">2</div>
+      <div class="box col-2 col-sm-2 col-md-4">3</div>
+    </div>
+
+    <hr>
+    <h2>nesting</h2>
+    <!-- 중첩 -->
+    <div class="row">
+      <div class="box col-6">
+        <div class="row">
+          <div class="box col-3">1</div>
+          <div class="box col-3">2</div>
+          <div class="box col-3">3</div>
+          <div class="box col-3">4</div>
+        </div>  
+      </div>
+      <div class="box col-6">2</div>
+      <div class="box col-6">3</div>
+      <div class="box col-6">4</div>
+    </div>
+
+    <hr>
+    <h2>offset 안 썼을 때</h2>
+    <!-- 몇 칸 띄어서 시작하기 -->
+    <div class="row"> 
+      <div class="box col-4">1</div>
+      <div class="box col-4">2</div>
+    </div>
+    <br>
+    <h2>offset</h2>
+    <!-- 몇 칸 띄어서 시작하기 -->
+    <div class="row"> 
+      <div class="box col-4 offset-4">1</div>
+      <div class="box col-4">2</div>
+    </div>
+    
+    <hr>
+    <h2 class="text-center">alignment</h2>
+    <div class="row parent justify-content-center align-items-center">
+      <div class="box col-4">1</div>  <!-- flex 와 같은 역할 -->
+    </div>
+
+    <!-- .row.parent + tab -->
+    <!-- Ctrl+Alt: 멀티 커서, Alt+Shift 해당 행 복붙 -->
+    <div class="row parent">
+      <!-- 행 12칸 열 12칸 나눠서 배치 -->
+      <div class="box col-4 align-self-start">1</div>
+      <div class="box col-4 align-self-center">2</div>
+      <div class="box col-4 align-self-end">3</div>
+    </div>
+
+
+
+  </div>
+  <!-- /body바로 위에 씀 -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</body>
+</html>
+
+<!-- Grid system => .row: flexbox  -->

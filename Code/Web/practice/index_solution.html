@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">  <!-- 얘를 밑에 써야함 -->
+  <title>Document</title>
+
+
+</head>
+<body>
+  <!-- display: flex; => d-flex -->
+  <!-- 1. Nav -->
+  <nav class="d-flex fixed-top bg-dark justify-content-between">
+    <a href="#">
+      <img src="images/logo.png" alt="Logo Image">
+    </a>
+    <ul class="d-flex align-items-center mb-0 pe-3">  <!-- default flex-row -->
+      <!-- mx => margin left, right 3 => 1rem씩  -->
+      <!-- text-decoration-none: 마우스 올렸을 때 밑줄 안 생김 -->
+      <li class="mx-3">
+        <a class="text-decoration-none text-white" href="#">Home</a>
+      </li>
+      <li class="mx-3">
+        <a class="text-decoration-none text-white" href="#">Community</a>
+      </li>
+      <li class="mx-3">
+        <a class="text-decoration-none text-white" href="#">Login</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- 2. Header -->
+  <!-- fw-bold: Bold체 -->
+  <!-- flex-column => justify가 위 아래, align이 좌 우 -->
+  <header class="d-flex flex-column 
+  align-items-center justify-content-center 
+  text-white fw-bold">
+      <!-- display-1: 글씨 크기(Heading) -->
+      <div class="display-1">Cinema</div>
+      <div class="display-1">Community</div>
+      <!-- button 생성시 btn만 주면 안됨 btn-색상도 해야함 -->
+      <a class="btn btn-lg btn-primary mt-5" href="#">Let's Go</a>
+  </header>
+
+  <!-- 3. Section -->
+  <section class="mt-5">
+    <h2 class="fs-1 text-center">Used Skills</h2>
+    
+    <article class="d-flex mt-5 text-center justify-content-between">
+      <div>
+        <img src="images/web.png" alt="Web Image">
+        <p>Web</p>
+      </div>
+      <div>
+        <img src="images/html5.png" alt="HTML5 Image">
+        <p>HTML5</p>
+      </div>
+      <div>
+        <img src="images/css3.png" alt="CSS3 Image">
+        <p>CSS3</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- 4. Footer -->
+  <footer class="d-flex align-items-center justify-content-center
+  fixed-bottom bg-primary text-white p-3">
+    <p class="mb-0">HTML & CSS project. Created by Moon</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</body>
+</html>

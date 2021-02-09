@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR');
+
+/* 아래의 코드는 수정하지 마세요. */
+body {
+  height: 3000px;
+  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+nav {
+  height: 80px;
+}
+
+nav img {
+  height: 80px;
+}
+
+header {
+  height: 700px;
+  background-image: url('images/header.jpg');
+  background-size: cover;
+}
+
+section > h2 {
+  font-size: 3rem;
+}
+
+section img {
+  width: 300px;
+}
+
+footer {
+  height: 60px;
+}
+
+
+/* 추가적으로 작성하고 싶은 순수 CSS 코드가 있다면 해당 주석 아래에 작성해 주세요. */

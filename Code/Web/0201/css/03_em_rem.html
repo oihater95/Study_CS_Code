@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+  <style>
+    .em {
+      font-size: 1.5em;
+    }
+
+    .rem {  /* 주로 사용 고정 비율이라서 */
+      font-size: 1.5rem;
+    }
+
+  </style>
+<body>
+  <ul class="em">
+    <li class="em">1.5em</li>  <!-- 16*1.5(ul)*1.5(li) = 32px (상속 받은 것도 곱해짐)-->
+    <li class="rem">1.5rem</li>  <!-- 16*1.5 = 24px -->
+    <li>no class</li>  <!-- 16*1.5(ul) = 24px (상속받음)-->
+  </ul>
+  
+</body>
+</html>

@@ -9,7 +9,10 @@
 - 0125 ~ 0126: Data Structure, Module
 - 0201 ~ 0202: HTML, CSS
 - 0203 ~ 0204: Bootstrap, Grid
-- 0208 ~ 0209: Algorithm, List, Greedy
+- 0208 ~ 0209: Algorithm, List, Greedy, Bubble & Counting Sort
+- 0215 ~ 0216:  이진 탐색, 비트연산자, 선택 정렬
+
+
 
 ## Code
 

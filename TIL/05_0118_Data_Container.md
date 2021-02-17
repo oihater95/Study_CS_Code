@@ -542,8 +542,14 @@ num2 = num1
 num2 = 10
 
 print(num1, num2)
-# 메모리상 num1 과 num2는 분리되어 있음 num2만 변경됨 (주소 공유 x)
+# 메모리상 num1 과 num2는 분리됨 num2만 변경됨 (주소 공유 x)
 >>> 20 10
+
+# int(10)자체에 메모리 할당
+num3 = 10
+num4 = 10
+id(num3) == id(num4)
+>>> True
 ```
 
 ```python

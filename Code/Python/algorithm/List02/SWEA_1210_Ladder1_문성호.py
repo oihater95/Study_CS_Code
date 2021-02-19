@@ -6,7 +6,8 @@ for test_case in range(1, 11):
 
     for i in range(100):
         arr.append(list(map(int, input().split())))
-
+    
+    # 배열 양 끝에 0을 추가해주면 아래처럼 범위를 나누지 않고 한번에 할 수 있다 대신 마지막에 start-1 해줘야함
     for i in range(100):  # 끝점 찾기
         if arr[99][i] == 2:
             end_idx = i

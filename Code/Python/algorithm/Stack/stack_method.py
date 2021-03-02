@@ -12,15 +12,34 @@ def pop():
 s = []
 #######################################################################
 # 배열의 경우 (크기 지정 o)
-def top():
-    if len(arr):
-        return arr[len(arr)-1]
-    else:  # arr 비어있을 때
-        return -1
+class Stack:
+    def __init__(self, n):
+        self.top = -1
+        self.stack = [0]*n
+
+    def push(self, data):
+        if self.top == len(self.stack) - 1:
+            return None
+        self.top += 1
+        self.stack[self.top] = data
+        print(self.stack)
+
+    def pop(self):
+        if self.top == 0:
+            return None
+        self.top -= 1
+        p = self.stack[self.top+1]
+        self.stack[self.top+1] = 0
+        print(self.stack)
+        return p
 
 
-def push_arr(item):
 
 
-
-arr = []
+my_stack = Stack(5)
+my_stack.push(1)
+my_stack.push(2)
+my_stack.push(3)
+print(my_stack.top)
+print(my_stack.pop())
+print(my_stack.pop())

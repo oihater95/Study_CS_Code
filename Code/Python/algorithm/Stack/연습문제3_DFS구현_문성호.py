@@ -10,33 +10,24 @@ for test_case in range(1, T+1):
     for i in range(M):
         A, B = map(int, input().split())
         arr[A][B] = 1
-
-    print(arr)
-
-    for i in range(1, N+1):
-        if 1 in arr[i]:
-            visited[i] = True
-            ans.append(i)
-            for j in range(1, N+1):
-                if arr[i][j] == 1 and visited[j] == False:
-                    s.append(i)
-                    v = i
-                    break
-            break
-
-    print(s, v, visited)
+        arr[B][A] = 1
+    # 시작점 1
+    s.append(1)
+    visited[1] = True
+    v = 1
+    print(v, end = ' ')
 
     while s:
-        for i in range(v, N+1):
-            if arr[v][i] == 1:
-                visited[i] == True
-                ans.append(i)
-                for j in range(v, N+1):
-                    if arr[i][j] == 1 and visited[j] == False:
-                        s.append(i)
-                        v = i
-                        print(s, v, visited)
-                    else:
-                        s.pop()
-                        print(s, v, visited)
-    print(ans)
+        i = 1
+        while i < 8:
+            if arr[v][i] == 1 and visited[i] == False:
+                visited[i] = True
+                s.append(i)
+                print(i, end = ' ')
+                v = i
+            i += 1
+        else:
+            s.pop()
+            if s:
+                v = s[-1]
+

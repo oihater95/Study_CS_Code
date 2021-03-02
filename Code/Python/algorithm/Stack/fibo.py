@@ -26,7 +26,7 @@ memo = [0, 1]
 
 print(fibo_memo(40))
 #####################################################################
-# 피보나치 DP2, iterative
+# 피보나치 DP2, recursive
 # 배열 크기 미리 할당
 memo2 = [-1] * 21
 memo2[0] = 0
@@ -41,3 +41,15 @@ def fibo_memo2(n):
 
 
 print(fibo_memo2(10))
+
+####################################################################
+# 피보나치 iterative (bottom-up)
+def fibo_iter(n):
+    f = [0, 1]
+
+    for i in range(2, n+1):
+        f.append(f[i-1] + f[i-2])
+
+    return f[n]
+
+print(fibo_iter(10))

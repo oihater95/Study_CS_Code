@@ -141,8 +141,6 @@ print(fibo(10))
 
 
 
-
-
 ## DP 동적계획법
 
 ### 예제
@@ -217,6 +215,46 @@ print(fibo_memo2(10))
 
 ### 예제
 
+```python
+# 백준 알고리즘 2583_영역구하기
+def dfs(row, col):  #
+    global area
+    area += 1  # dfs 한 층 내려갈 때마다 넓이(빈 영역 1칸) + 1
+    arr[row][col] = 1  # 카운트한 영역은 1로 갱신
+
+    for i in range(4):
+        nr = row + dr[i]
+        nc = col + dc[i]
+        if 0 <= nr < M and 0 <= nc < N and arr[nr][nc] == 0:
+            dfs(nr, nc)
+
+M, N, K = map(int,input().split())
+arr = [[0 for _ in range(N)] for i in range(M)]
+ans = []  # 각 영역 넓이 리스트
+
+for i in range(K):
+    min_col, min_row, max_col, max_row = map(int, input().split())
+    for j in range(min_row, max_row):
+        for k in range(min_col, max_col):
+            arr[j][k] = 1
+
+# 상하좌우
+dr = [-1, 1, 0, 0]
+dc = [0, 0, -1, 1]
+
+for i in range(M):
+    for j in range(N):
+        if arr[i][j] == 0:
+            area = 0
+            dfs(i, j)
+            ans.append(area)
+
+ans = sorted(ans)
+print(len(ans))
+for area_elem in ans:
+    print(area_elem, end = ' ')
+```
+
 
 
 
@@ -254,11 +292,126 @@ print(fibo_memo2(10))
 
 #### 부분집합
 
+```python
+# 백트래킹
+N = 3
+
+arr = [1, 2, 3]  # 활용할 데이터
+
+sel = [0] * N  # a 리스트 (내가 해당 원소를 뽑았는지 체크)
+
+def powerset(idx):
+    if idx == N:
+        print(sel, ':', end = ' ')
+        for i in range(N):
+            if sel[i]:
+                print(arr[i], end = ' ')
+        print()
+
+        return  # 호출한 곳으로 돌아감 (return이 none)
+
+    # idx 자리를 안 뽑고 간다
+    sel[idx] = 0
+    powerset(idx + 1)
+    # idx 자리의 원소를 뽑고 간다
+    sel[idx] = 1
+    powerset(idx + 1)
+
+
+powerset(0)
+```
+
+
+
+#### 순열
+
+```python
+# 재귀
+# nPr
+
+arr2 = [1, 2, 3, 4, 5]
+N2 = len(arr2)
+sel2 = [0] * 3  # 5P3
+check2 = [0] * N2
+
+def permutation2(idx):
+    if idx == 3:  # 5P3
+        print(sel2)
+
+    else:
+        for i in range(N2):
+            if check2[i] == 0:  # i번째 자리 아직 안썼다면 사용
+                sel2[idx] = arr2[i]
+                check2[i] = 1  # 사용했다는 표시
+                permutation2(idx+1)
+                check2[i] = 0  # 다음 반복문을 위해 원상복구
+
+permutation2(0)
+```
+
+```python
+# swap
+arr = [1, 2, 3, 4, 5]
+N = 5
+
+def permutation(idx):
+    if idx == N:
+        print(arr)
+
+    else:
+        for i in range(idx, N):
+            arr[idx], arr[i] = arr[i], arr[idx]
+            permutation(idx + 1)
+            arr[idx], arr[i] = arr[i], arr[idx]  # 다음 인덱스에서 사용하기 위해 원상복구
+
+permutation(0)
+```
+
+```python
+# 비트연산자
+arr = [1, 2, 3]
+N = 3
+sel = [0] * N  # 뽑은 결과를 적음
+
+# check => 10진수 정수
+def permutation(idx, check):
+    if idx == N:
+        print(sel)
+        return
+
+    for j in range(N):
+        if check & (1 << j): continue  # j번째 원소 사용했다면 다음 index로
+
+        sel[idx] = arr[j]
+        print((1<<j), check, check | (1<<j))
+        permutation(idx+1, check | (1<<j))  # 일회성 사용이므로 원상복구가 필요없다
+
+permutation(0, 0)
+
+##########################################################################
+arr = [1, 2, 3]
+N = 3
+sel = [0] * N  # 뽑은 결과 받기
+
+def perm(idx, check):
+    if idx == N:
+        print(sel)
+
+    for j in range(N):
+        if check & (1 << j): continue  # 000 & 001 = 000 False
+
+        else:
+            sel[idx] = arr[j]
+            # check = check | (i << j) 로 저장해버리면 원상복구하는 과정 필요
+            perm(idx + 1, check|(1 << j))  # 000 | 001 = 001
+
+perm(0, 0)  # check: 000부터
+
+```
+
 
 
 #### N-Queen
-
-
 
 
 
@@ -274,7 +427,27 @@ print(fibo_memo2(10))
 
 #### 거듭제곱
 
+```python
+# 반복문 사용한 선형시간 O(n)
 
+def iteraive_power(x, n):  # 2^8 => 7번 연산
+    result = 1
+
+    for i in range(1, n+1):
+        result *= x
+
+        return result
+
+# 분할 정복 거듭제곱 O(logn)
+def Recursive_power(x, n):  # 2^8 => 2*2*2*2 * 2*2 * 2 * 2  => 4번연산?
+    if n == 1: return x
+    if n % 2 == 0:
+        y = Recursive_power(x, n//2)
+        return y * y
+    else:
+        y = Recursive_power(x, (n-1) // 2)
+        return y * y * x
+```
 
 
 
@@ -284,4 +457,30 @@ print(fibo_memo2(10))
 - 합병 정렬과의 차이점
   - 합병정렬은 그냥 두 부분으로 나누는 반면, 퀵정렬은 분할 할 때 기준 아이템(pivot item)중심으로, 이보다 작은 것은 왼편, 큰 것은 오른편에 위치시킴
   - 각 부분 정렬이 끝난 후 합병정렬은 "합병"이라는 후처리가 필요하지만 퀵정렬은 필요로 하지 않음.
+
+```python
+# 호어 파티션
+def partition(a, begin, end):
+    pivot = (begin + end) // 2  # pivot = 가운데
+    L = begin
+    R = end
+    while L < R:
+        while(a[L] < a[pivot] and L < R): L += 1  # L: 오른쪽으로 이동하며 피봇보다 크거나 같은 원소 찾기
+        while (a[R] >= a[pivot] and L < R): R -= 1  # R: 왼쪽으로 이동하며 피봇보다 작은 원소 찾기
+
+        if L < R:
+            if L == pivot:
+                pivot = R
+            a[L], a[R] = a[R], a[L]
+
+    a[pivot], a[R] = a[R], a[pivot]  # 피봇 위치 확정
+
+    return R
+
+def quickSort(a, begin, end):
+    if begin < end:
+        p = partition(a, begin, end)
+        quickSort(a, begin, p-1)  # 왼쪽 부분 집합 정렬
+        quickSort(a, p+1, end)  # 오른쪽 부분 집합 정렬
+```
 

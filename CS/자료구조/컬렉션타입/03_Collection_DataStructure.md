@@ -230,16 +230,10 @@ temp = {1: 'a', 2: 'b', 3: 'c'}
 print(temp.setdefault(1))
 temp.setdefault(4)
 print(temp)
-    ```
->>>
-a
-{1: 'a', 2: 'b', 3: 'c', 4: None}
-  
+  >>>
+  a
+  {1: 'a', 2: 'b', 3: 'c', 4: None}
   ```
-  
-  ```
-
-
 
 
 

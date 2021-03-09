@@ -1,0 +1,22 @@
+{% extends 'base.html' %}  {# extends는 항상 최상단에 작성, 위에 주석도 X #}
+{% comment %} 
+  DTL != Python
+  만약 sort를 하고 싶다면 sort는 views.py에서 할 것(표현과 로직 분리, 마크업 = 표현만)
+{% endcomment %}
+
+{% block title %}
+  <title>pick lotto</title>
+{% endblock title %}
+  
+{% block content %}
+  <h1>Pick Your Lotto Numbers</h1>
+  <h2>{{ greeting }}</h2>
+  <p>이번 주 당신의 행운번호는 {{ lotto }} 입니다!</p>
+  <ul>
+    {% for number in lotto %}
+      <li>{{ number }}</li>
+    {% endfor %}
+  </ul>
+
+{% endblock content %}
+  

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% comment %} 
+  App_name > templates > app_name > templates > html
+  이렇게 해야 html이름 같을 때 해당 views.py에서 실행할 html만 실행시킬 수 있음
+{% endcomment %}
+
+{% block title %}
+  practice0309
+{% endblock title %}
+
+{% block content %}
+  <h1>로또 당첨 횟수를 알아보자.</h1>
+  <h2>이번 회차 당첨 번호 : {{ win_nums }} + {{ bonus_num }}</h2>
+  <ul>
+    {% for key, value in result.items %}  {# 0번 인덱스 ~ 4번 인덱스까지 슬라이스#}
+      <li>
+        <p>{{ key }} : {{ value }}번 </p>
+      </li>
+    {% endfor %}
+  </ul>
+
+{% endblock content %}
+
+

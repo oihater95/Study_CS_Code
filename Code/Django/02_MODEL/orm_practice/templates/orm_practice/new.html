@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}New page{% endblock title %}
+
+{% block content %}
+  {# {% url create%} urls.py의 name따라감 => name='create' => views.create #}
+  <form action="{% url 'create' %}" method="GET">
+    <div>
+      name: <input type="text" name="name">
+    </div>
+
+    <div>
+      age: <input type="text" name="age">
+    </div>
+    
+    <div>
+     major: <input type="text" name="major">
+    </div>
+    intro: <textarea name="intro" cols="30" rows="5"></textarea>
+
+    <div>
+      <input type="submit" class="btn-primary">
+    </div>
+  </form>
+  
+{% endblock content %}

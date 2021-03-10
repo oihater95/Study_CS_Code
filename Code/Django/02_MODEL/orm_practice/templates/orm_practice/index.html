@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Index page{% endblock title %}
+
+{% block content %}
+  <h1>This is Index page</h1>
+  <a href="{% url 'new' %}" class="btn-btn-primary">New</a>
+  <ul>
+    {% for student in students %}
+      <li>
+        {% comment %} 
+          하드코딩
+          <a href="/practice/{{ student.id }}">{{ student.name }}</a>
+        {% endcomment %}
+        {# 'detail'은 urls.py의 name따라감(name='detail'), 해당 url은 변수 라우팅이므로 들어갈 변수를 써줘야함#}
+        <a href="{% url 'detail' student.id %}">{{ student.name }}</a> 
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock content %}

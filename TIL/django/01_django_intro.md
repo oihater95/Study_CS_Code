@@ -178,6 +178,28 @@ def hello(request, name):  # url의 동적변수 name(urls.py의 동적변수와
 
 
 
+##### Variable Routing
+
+- url을 변수처럼, 동적 주소를 가짐
+
+```python
+# practice0309/var_route/뭐든지들어옴/
+    # views.var_route(request, value='asdf')
+    path('var_route/<value>/', views.var_route),  # default는 str, <int:value> => value는 int형으로 받음
+    path('lotto/<value>', views.lotto),  # value는 str형, value = 회차
+    path('lotto_sol/', views.lotto),
+    # variable routing 변수 라우팅 => url을 변수처럼, 동적 주소
+    # path('<int:movie_id>/', views.find_movie),
+    
+# domain/practice/lotto/953
+```
+
+
+
+
+
+
+
 #### Filters
 
 `` {{ variable|filter }}``
@@ -241,6 +263,7 @@ def hello(request, name):  # url의 동적변수 name(urls.py의 동적변수와
 - 표현(template)과 로직(view)분리
 - 중복 배제
 - base.html 사용 시 settings.py에서 TEMLPLATES DIRS 수정
+- 'DIRS': [BASE_DIR / 'templates'],
 
 `{% extends %}`
 
@@ -325,6 +348,41 @@ TEMPLATES = [
 
 ### HTML Form
 
+```django
+{% extends 'base.html' %}
+{% block title %}
+  ping
+{% endblock title %}
+
+{% block content %}
+  <h1>ping</h1>
+
+  {% comment %} 
+    action => 수신인(목적지), url
+    method => 공개 / 비공개 여부 => GET, POST, ...
+    GET: 모든 데이터가 (URL)에 공개되어 전송, URL making, default
+    POST: 데이터가 URL에 공개되지 않음
+
+    input은 항상 form 안에 쓰기, label 꼭 붙이기 (label은 사람용)
+  {% endcomment %}
+
+  {# (현재도메인)/practice0309/pong/ => 상대경로 #}
+  {# 위에는 하드코딩, urls.py의 name을 활용하기, {% url 'name' %} #}
+  {# 요청과 form에 있는 데이터가 urls.py의 pong으로 감 => views.pong => pong.html #}
+  <form action="{% url 'practice0309:pong' %}" method="GET">  
+    <label for="kr-name">한글이름</label>  {# label과 input을 for와 id로 연결 #}
+    <input type="text" name="kr-name" id='kr-name'>  {# name = key, url에 담겨서 전송됨, name없어도 브라우저에는 남아있지만 데이터가 넘어가지 않음 #}
+
+    <label for="en-name">English name</label>  
+    <input type="text" name="en-name" id='en-name'>
+
+    <input type="submit" value="전송">  {# value default는 제출, name없어도 됨 #}
+  </form>
+{% endblock content %}
+```
+
+
+
 #### HTML form element
 
 - 웹에서 사용자 정보를입력하는 여러방식(button, text, password 등)을 제공
@@ -333,12 +391,15 @@ TEMPLATES = [
 
 - 핵심 속성
 
-  - action: 입력 데이터가 전송될 URL 지정
-  - method: 입력 데이터 전달 방식 지정
+  - action: 입력 데이터가 전송될 URL 지정, 목적지
+  - method: 입력 데이터 전달 방식 지정, GET, POST,...
   
   
 
 #### HTML input element
+
+- **name = key**, url에 담겨서 전송됨
+- name 없으면 key가 없어 데이터 넘어가지 않음
 
 - 사용자로부터 데이터를 입력 받기 위해 사용
 - type 속성에 따라 동작 방식 달라짐

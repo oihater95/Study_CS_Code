@@ -1,4 +1,4 @@
-# 03. Django Intro
+# 01. Django Intro
 
 ## Django
 

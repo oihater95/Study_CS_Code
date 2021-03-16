@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Detail page{% endblock title %}
+{% block navbar %}
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Movies</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'new' %}">New</a>        
+        </div>
+      </div>
+    </div>
+  </nav>
+{% endblock navbar %}
+
+{% block content %}
+  <h1>Title:</h1>
+  <p>{{ movie.title }}</p>
+  <hr>
+  <h1>Overview:</h1>
+  <p>{{ movie.overview }}</p>
+  <hr>
+  <h1>Poster_path:</h1>
+  <p>{{ movie.poster_path }}</p>
+  <hr>
+
+  <a href="{% url 'edit' movie.pk %}" class="btn btn-secondary">Edit</a>
+  <form action="{% url 'delete' movie.pk %}" method="POST" style="display: inline-block">
+    {% csrf_token %}
+    <input type="submit" class="btn btn-danger" onclick="return confirm('Delete?')" value="Delete">
+  </form>
+  {% comment %} <a href="{% url 'delete' movie.pk %}" class="btn btn-danger" onclick="return confirm('Delete?')">Delete</a> {% endcomment %}
+{% endblock content %}

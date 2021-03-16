@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}New page{% endblock title %}
+{% block navbar %}
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Movies</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'new' %}">New</a>        
+        </div>
+      </div>
+    </div>
+  </nav>
+
+{% endblock navbar %}
+
+{% block content %}
+  <form action="{% url 'create' %}" method='POST'>
+    <div>
+      <h2>title</h2>
+      <input type="text" name="title">
+    </div>
+    <div>
+      <h2>overview</h2>
+      <textarea name="overview" cols="30" rows="10"></textarea>
+    </div>
+    <div>
+      <h2>poster_path</h2>
+      <input type="text" name="poster_path">
+    </div>
+
+    <div>
+      <input type="submit" class="btn btn-primary">
+    </div>
+  </form>
+
+{% endblock content %}

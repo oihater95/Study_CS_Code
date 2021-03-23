@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Detail</h1>
+  <hr>
+  <h1>Name: {{ reservation.name }}</h1>
+  <p>Number: {{ reservation.number }}</p>
+  <p>Created at: {{ reservation.created_at }}</p>
+  <p>Updated at: {{ reservation.updated_at }}</p>
+  <hr>
+  <a href="{% url 'board:edit' reservation.pk %}">EDIT</a>
+  <a href="{% url 'board:index' %}">BACK</a>
+  <form action="{% url 'board:delete' reservation.pk %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="삭제" onclick="return confirm('찐?')">
+  </form>
+{% endblock content %}

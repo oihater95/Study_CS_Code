@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Index</h1>
+<div>
+  <a href="{% url 'articles:new' %}">NEW</a>
+</div>
+
+<ul>
+  {% for article in articles %}
+    <li>
+      <a href="{% url 'articles:detail' article.pk %}">  {# article.pk는 인스턴스 article의 pk가 아님 url의 변수 라우팅#}
+      {# 인스턴스 article의 pk는 그냥 pk 또는 id #}
+        {{ article.title }}
+      </a>
+    </li>
+  {% endfor %}
+
+</ul>
+
+
+{% endblock content %}

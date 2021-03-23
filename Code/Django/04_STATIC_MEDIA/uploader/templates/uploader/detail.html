@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}  {# load media는 없음 #}
+<h1>{{ article.title }}</h1>
+<p>{{ article.content }}</p>
+{% if article.image %}  {# image있을 때만 보여줌 #}
+  <img src="{{ article.image.url }}" alt="{{ article.image }}">
+{# image.url => media/filename #}
+{% endif %}
+
+{% endblock content %}

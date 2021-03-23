@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>New</h1>
+
+<form method='POST'>  {# action 없음 => 현재위치(자기자신)으로 #}
+  {% csrf_token %}
+  {{ form.as_p }}
+  <p><input type="submit" value="제출"></p>
+</form>
+
+{% endblock content %}

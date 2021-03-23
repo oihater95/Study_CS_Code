@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>CONTACT</h1>
+
+<form action="{% url 'articles:contact' %}" method="POST">
+  {% csrf_token %}
+  {# contact_form의 요소들을 각각 input으로 만들어줌 #}  
+  {{ contact_form.as_p }}  {# .as_p => 각각을 p Tag #}
+  <input type="submit">
+</form>
+
+{% endblock content %}

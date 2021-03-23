@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Edit</h1>
+
+{% comment %}  
+  action 비워두면 html을 받아본 현재 url로 보냄 -> GET /articles/edit
+  아래 제출버튼 누르면 action은 위 URL을 저장 + POST
+  결론: request => POST /articles/edit
+  아래 form은 action="{% url 'edit' %}"을 쓰지 않아도 됨
+  method="POST"를 쓰지 않으면 GET으로 요청이 감
+{% endcomment %}
+{% comment %} 
+  = <form action="{% url 'edit' article.pk %}" method="POST"> 로 쓰려면
+  views.py의 def edit에 article을 context에 담지 않으므로 context에 article을 추가해야함
+{% endcomment %}
+<form method="POST"> 
+  {% csrf_token %}
+  {# form의 요소들을 각각 input으로 만들어줌 #}  
+  {{ form.as_p }}  {# .as_p => 각각을 p Tag 이외에 as_table, as_ul가능 #}
+  <input type="submit">
+</form>
+
+{% endblock content %}
+
+{% comment %} 
+  /articles/4/comments/1/edit
+  /articles/<int:article.pk
+{% endcomment %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}  {# 파일을 꺼내 사용할 때 static 사용, 개발자가 준비한 CSS, image 등 #}
+
+{% block head %}
+  <link rel="stylesheet" href="{% static 'uploader/css/main.css' %}">
+{% endblock head %}
+
+{% block content %}
+<h1>Index page</h1>
+{% comment %} 
+<img src="https://cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/SN4MJINOHBEG5KPO3LJ5ZNXAZY.jpg" alt="Come_on">
+<img src="/static/uploader/어서오고.jpg" alt="ComeOn">  {# 서버로부터 요청 받아올 때는 상대경로 X(절대경로도 당연히 X) #} 
+{% endcomment %}
+<img src="{% static 'uploader/images/어서오고.jpg' %}" alt="Come_On!">
+
+{% endblock content %}
+
+{% comment %} 
+  요청 => 서버 => 응답 html
+  ../../어서오고.jpg => urls.py에서는 이런 파일(url)이 없음
+  static을 이용해 file찾기(path를 통해 들어오는 것이지만 urls.py에서 설정 X settings.py에서 설정)
+  urls pattern 중에서 /static or {% static %}(얘를 사용) static하위폴더를 탐색
+{% endcomment %}

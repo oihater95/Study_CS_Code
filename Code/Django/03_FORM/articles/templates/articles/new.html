@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>NEW</h1>
+
+{% comment %}  
+  action 비워두면 html을 받아본 현재 url로 보냄
+  아래 form은 action="{% url 'new' %}"을 쓰지 않아도 됨
+  method="POST"를 쓰지 않으면 GET으로 요청이 감
+{% endcomment %}
+<form action="{% url 'new' %}" method="POST">  {# = <form method="POST"> #}
+  {% csrf_token %}
+  {# form의 요소들을 각각 input으로 만들어줌 #}  
+  {{ form.as_p }}  {# .as_p => 각각을 p Tag #}
+  <input type="submit">
+</form>
+
+{% endblock content %}

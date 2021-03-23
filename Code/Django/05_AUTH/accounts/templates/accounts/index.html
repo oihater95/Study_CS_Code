@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<h1>All Users</h1>
+{{ user }}  {# settings.py의 TEMPLATES의 context processor의 request와 auth에 의해 user 출력 가능 #}
+  
+  {% for u in users %}
+    <p>{{ u.username }}</p>
+  {% endfor %}
+
+{% endblock content %}
+
+  

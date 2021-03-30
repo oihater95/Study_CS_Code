@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+  <link rel="stylesheet" href="{% static 'practice/css/main.css' %}">
+{% endblock head %}
+
+{% block content %}
+  <h1>IndexPage</h1>
+
+  <a href="{% url 'practice:new' %}">New</a>
+  <img src="{% static 'practice/images/어서오고.jpg' %}" alt="comeon">
+  <ul>
+    {% for article in articles %}
+      <li>
+        <a href="{% url 'practice:detail' article.pk %}">{{ article.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+  
+  
+{% endblock content %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Edit{% endblock title %}
+{% block content %}
+<div class = "container">
+  <h1>EDIT</h1>
+  <form method='POST'>  {# action 없음 현재위치로 #}
+    {% csrf_token %}
+    {{ form.as_p }}  {# p tag #}
+    <input type="submit">
+  </form>
+</div>
+{% endblock content %}

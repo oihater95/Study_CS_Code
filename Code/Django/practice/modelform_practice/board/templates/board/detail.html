@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Detail{% endblock title %}
+{% block content %}
+<div class = "container">
+  <h1>DETAIL</h1>
+  <hr>
+  <p>Name: {{ reservation.name }}</p>
+  <p>Number: {{ reservation.number }}</p>
+  <p>Created at: {{ reservation.created_at }}</p>
+  <p>Updated at: {{ reservation.updated_at }}</p>
+  <hr>
+  <a href="{% url 'edit' reservation.pk %}">EDIT</a>
+
+  <form action="{% url 'delete' reservation.pk %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="DELETE">
+  
+  </form>
+
+</div>
+
+
+
+{% endblock content %}

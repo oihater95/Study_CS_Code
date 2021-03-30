@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Detail</h1>
+<p>Name: {{ reservation.name }}</p>
+<p>Number: {{ reservation.number }}</p>
+<p>created_at: {{ reservation.created_at }}</p>
+<p>Updated_at: {{ reservation.updated_at }}</p>
+<hr>
+<a href="{% url 'board:edit' reservation.pk %}">Edit</a>
+<a href="{% url 'board:index' %}">Back</a>
+
+<form action="{% url 'board:delete' reservation.pk %}" method="POST">
+{% csrf_token %}
+  <input type="submit" value="Delete" onclick="return confirm('ㄹㅇ?')">
+</form>
+{% endblock content %}
+

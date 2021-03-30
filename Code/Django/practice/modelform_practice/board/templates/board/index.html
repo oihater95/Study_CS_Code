@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Index{% endblock title %}
+{% block content %}
+<div class = "container">
+  <h1>INDEX</h1>
+  <a href="{% url 'new' %}">NEW</a>
+  <ul>
+    {% for reservation in reservations %}
+      <li>
+        <div>
+          <p>{{ reservations.name }}</p>
+          <p>{{ reservations.number }}</p>
+          <a href="{% url 'detail' reservation.pk %}">DETAIL</a>
+        </div>
+      </li>
+    {% endfor %}
+  
+  </ul>
+</div>
+
+{% endblock content %}

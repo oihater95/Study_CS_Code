@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'accounts:index' %}">My App</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      {% if user.is_authenticated %}
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+            <a class="nav-link active" href="{% url 'accounts:profile' user.username %}">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="{% url 'accounts:logout' %}">Logout</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:update' user.username %}">Edit</a>
+          </li>
+        </ul>
+        <form action="{% url 'accounts:withdraw'%}" method="POST">
+          {% csrf_token %}
+          <div class="d-inline-block">
+            <button class="btn btn-light">Withdraw</button>
+          </div>
+          
+        </form>
+      {% else %}
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" href="{% url 'accounts:signup' %}">Sign up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
+          </li>
+        </ul>
+
+      {% endif %}
+      
+ 
+    </div>
+  </div>
+</nav>

@@ -2,7 +2,7 @@
 
 ## 트리 자료구조
 
-<img src="04_Algorithm_Tree.assets/트리-1617597182631.PNG" alt="트리" style="zoom:60%;" />
+<img src="05_Algorithm_Tree.assets/트리-1617597182631.PNG" alt="트리" style="zoom:60%;" />
 
 - **비선형구조**
 - 원소들간 **1:N 관계를 가지는 자료구조**
@@ -26,7 +26,7 @@
 
 ## 이진 트리 Binary Tree
 
-<img src="04_Algorithm_Tree.assets/이진트리-1617598009621.PNG" alt="이진트리" style="zoom:60%;" />
+<img src="05_Algorithm_Tree.assets/이진트리-1617598009621.PNG" alt="이진트리" style="zoom:60%;" />
 
 - 각 노드가 자식 노드를 **최대 2개 까지**만 갖는 트리(왼쪽 자식 노드, 오른쪽 자식 노드)
 - 모든 노드들이 최대 2개의 서브 트리를 갖음
@@ -37,7 +37,7 @@
 
 ### 포화 이진 트리
 
-<img src="04_Algorithm_Tree.assets/포화 이진 트리.PNG" alt="포화 이진 트리" style="zoom:60%;" />
+<img src="05_Algorithm_Tree.assets/포화 이진 트리.PNG" alt="포화 이진 트리" style="zoom:60%;" />
 
 - **모든 레벨의 노드가 포화 상태로 차 있는 이진 트리**
 - 높이 h => 노드 개수: 2^(h+1) - 1개
@@ -49,7 +49,7 @@
 
 ### 완전 이진 트리
 
-<img src="04_Algorithm_Tree.assets/완전 이진 트리.PNG" alt="완전 이진 트리" style="zoom:60%;" />
+<img src="05_Algorithm_Tree.assets/완전 이진 트리.PNG" alt="완전 이진 트리" style="zoom:60%;" />
 
 - 높이가 h이고 노드 수가 n개 일 때 (h+1 <= n <= 2^(k+1) - 1) 포**화 이진 트리의 노드 번호 1번부터 n번까지 빈자리가 없는 이진 트리**
 
@@ -61,7 +61,7 @@
 
 ### 편향 이진 트리
 
-<img src="04_Algorithm_Tree.assets/편향트리.PNG" alt="편향트리" style="zoom:60%;" />
+<img src="05_Algorithm_Tree.assets/편향트리.PNG" alt="편향트리" style="zoom:60%;" />
 
 - 높이 h에 대한 최소 노드 개수를 가지며 한 쪽 방향의 자식 노드만 가진 이진 트리
 
@@ -73,7 +73,7 @@
 
 > 순회: 트리의 각 노드를 **중복되지 않게 전부 방문**, 비선형구조라 선후 연결 관계 알 수 없음
 
-<img src="04_Algorithm_Tree.assets/VLR.PNG" alt="VLR" style="zoom:67%;" />
+<img src="05_Algorithm_Tree.assets/VLR.PNG" alt="VLR" style="zoom:67%;" />
 
 - 전위 순회(preorder), **VLR**
   - 부모 노드 방문 후, 자식 노드 좌, 우 순서로 방문
@@ -96,7 +96,7 @@
 
   
 
-<img src="04_Algorithm_Tree.assets/순회.PNG" alt="순회" style="zoom:50%;float:left" />
+<img src="05_Algorithm_Tree.assets/순회.PNG" alt="순회" style="zoom:50%;float:left" />
 
 - 트리 순서: T0 -> T1, T3 -> T2
 - 노드 순서: A-B-D-E-H-I-C-F-G
@@ -151,7 +151,7 @@ preorder(root)
 
   3) 현재 노드 n의 오른쪽 서브 트리로 이동 => R
 
-<img src="04_Algorithm_Tree.assets/순회.PNG" alt="순회" style="zoom:50%;float:left" />
+<img src="05_Algorithm_Tree.assets/순회.PNG" alt="순회" style="zoom:50%;float:left" />
 
 - 트리 순서: T1 -> T3 -> T0 -> T2
 - 노드 순서: D-B-H-E-I-A-F-C-G
@@ -178,7 +178,7 @@ def inorder(n):
 
   3) 현재 노드 n을 방문하여 처리한다. => V
 
-<img src="04_Algorithm_Tree.assets/순회.PNG" alt="순회" style="zoom:50%;float:left" />
+<img src="05_Algorithm_Tree.assets/순회.PNG" alt="순회" style="zoom:50%;float:left" />
 
 - 트리 순서: T1 -> T3 -> T2 -> T0
 - 노드 순서: D-H-I-E-B-F-G-C-A
@@ -199,7 +199,7 @@ def postorder(n):
 
 ### 배열
 
-<img src="04_Algorithm_Tree.assets/이진트리_배열-1617631357781.PNG" alt="이진트리_배열" style="zoom:60%;" />
+<img src="05_Algorithm_Tree.assets/이진트리_배열-1617631357781.PNG" alt="이진트리_배열" style="zoom:60%;" />
 
 - 루트의 번호를 1로 함
 - 레벨 n에 있는 노드에 대하여 왼쪽부터 오른쪽으로 2^n부터 2^(n+1)-1 번호 부여
@@ -216,7 +216,7 @@ def postorder(n):
 
 ### 연결리스트 Linked List
 
-<img src="04_Algorithm_Tree.assets/이진트리_연결리스트1.PNG" alt="이진트리_연결리스트1" style="zoom:60%;" />
+<img src="05_Algorithm_Tree.assets/이진트리_연결리스트1.PNG" alt="이진트리_연결리스트1" style="zoom:60%;" />
 
 - 이진 트리의 모든 노드는 최대 2개의 자식 노드를 가지므로 일정한 구조의 단순 연결 리스트 노드를 사용하여 구현
 
@@ -230,7 +230,7 @@ def postorder(n):
 - 연산자는 루트 노드 or 가지 노드
 - 피연산자는 모두 리프 노드
 
-<img src="04_Algorithm_Tree.assets/수식트리-1617631679641.PNG" alt="수식트리" style="zoom:60%;float:left" />
+<img src="05_Algorithm_Tree.assets/수식트리-1617631679641.PNG" alt="수식트리" style="zoom:60%;float:left" />
 
 - 전위 표기법: + * * / A B C D E  (전위 순회)
 - 중위 표기법: A / B * C * D + E (중위 순회)
@@ -240,7 +240,7 @@ def postorder(n):
 
 ## 이진 탐색 트리
 
-<img src="04_Algorithm_Tree.assets/이진 탐색 트리.PNG" alt="이진 탐색 트리" style="zoom:60%;" />
+<img src="05_Algorithm_Tree.assets/이진 탐색 트리.PNG" alt="이진 탐색 트리" style="zoom:60%;" />
 
 - 탐색 작업을 효율적으로 하기 위한 자료구조
 - 모든 원소는 서로 다른 유일한 키를 갖는다.
@@ -252,7 +252,7 @@ def postorder(n):
 
 ### 탐색 연산
 
-<img src="04_Algorithm_Tree.assets/이진탐색트리_13찾기.PNG" alt="이진탐색트리_13찾기" style="zoom: 50%;" />
+<img src="05_Algorithm_Tree.assets/이진탐색트리_13찾기.PNG" alt="이진탐색트리_13찾기" style="zoom: 50%;" />
 
 - 루트에서 시작
 - 탐색할 키 값 x를 루트 노드의 키 값과 비교
@@ -268,7 +268,7 @@ def postorder(n):
 
 ### 삽입 연산
 
-<img src="04_Algorithm_Tree.assets/이진탐색트리_삽입.PNG" alt="이진탐색트리_삽입" style="zoom:60%;" />
+<img src="05_Algorithm_Tree.assets/이진탐색트리_삽입.PNG" alt="이진탐색트리_삽입" style="zoom:60%;" />
 
 - 탐색 연산 먼저 수행
   - 삽입할 원소와 같은 원소가 트리에 있으면 삽입 X, 같은 원소가 트리에 있는지 탐색
@@ -279,7 +279,7 @@ def postorder(n):
 
 ### 삭제 연산
 
-<img src="04_Algorithm_Tree.assets/이진탐색트리_삭제.PNG" alt="이진탐색트리_삭제" style="zoom:60%;" />
+<img src="05_Algorithm_Tree.assets/이진탐색트리_삭제.PNG" alt="이진탐색트리_삭제" style="zoom:60%;" />
 
 - 13, 12, 9 순서로 삭제
 
@@ -301,7 +301,7 @@ def postorder(n):
 >
 > 힙의 키를 우선 순위로 활용하여 우선 순위 큐 구현 가능
 
-<img src="04_Algorithm_Tree.assets/힙_예시.PNG" alt="힙_예시" style="zoom: 50%;" />
+<img src="05_Algorithm_Tree.assets/힙_예시.PNG" alt="힙_예시" style="zoom: 50%;" />
 
 ### 최대 힙 Max Heap
 
@@ -319,7 +319,7 @@ def postorder(n):
 
 
 
-<img src="04_Algorithm_Tree.assets/힙_예시2.PNG" alt="힙_예시2" style="zoom: 50%;float:left" />
+<img src="05_Algorithm_Tree.assets/힙_예시2.PNG" alt="힙_예시2" style="zoom: 50%;float:left" />
 
 - 힙이 아닌 이유
   - 트리1: 완전 이진 트리가 아님
@@ -333,13 +333,13 @@ def postorder(n):
 
 - 리프 노드 삽입 => 위치 바꿀 필요없이 삽입
 
-<img src="04_Algorithm_Tree.assets/힙_삽입1.PNG" alt="힙_삽입1" style="zoom:60%;" />
+<img src="05_Algorithm_Tree.assets/힙_삽입1.PNG" alt="힙_삽입1" style="zoom:60%;" />
 
 
 
 - 루트 또는 가지 노드 삽입 => 리프노드에 삽입 후 위치 바꿈
 
-<img src="04_Algorithm_Tree.assets/힙_삽입2.PNG" alt="힙_삽입2" style="zoom:60%;" />
+<img src="05_Algorithm_Tree.assets/힙_삽입2.PNG" alt="힙_삽입2" style="zoom:60%;" />
 
 
 
@@ -353,10 +353,11 @@ def postorder(n):
 
 - 순서
 
-  1) 루트 노드 삭제
+  1) 루트 노드 값 삭제
 
-  2) 마지막 노드 루트 노드로 옮김
+  2) 마지막 노드 값을 루트 노드로 옮김
 
   3) 루트 노드와 자식 노드 비교하여 위치 바꾸기
 
-<img src="04_Algorithm_Tree.assets/힙_삭제.PNG" alt="힙_삭제" style="zoom:60%;" />
+<img src="05_Algorithm_Tree.assets/힙_삭제.PNG" alt="힙_삭제" style="zoom:60%;" />
+

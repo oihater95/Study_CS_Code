@@ -2,6 +2,7 @@ def powerset(idx):
     if idx == N:
         result = 0
         ans = []
+
         for i in range(N):
             if sel[i]:
                 result += arr[i]

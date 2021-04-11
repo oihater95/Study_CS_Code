@@ -27,10 +27,12 @@ arr2 = [1, 2, 3, 4, 5]
 N2 = len(arr2)
 sel2 = [0] * 3  # 5P3
 check2 = [0] * N2
+ans = []
 
 def permutation2(idx):
     if idx == 3:  # 5P3
-        print(sel2)
+        temp = sel2[:]  # 깊은 복사해야함
+        ans.append(temp)
 
     else:
         for i in range(N2):

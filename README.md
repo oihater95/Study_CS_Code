@@ -2,6 +2,7 @@
 
 ## Today I Learned
 
+- 0105 ~ 0117: Java Beginner (SWEA_Beginner)
 - 0118 ~ 0119: Python Intro, Data Type
 - 0120 ~ 0121:  Control Statement, Function, Error Exception
 - 0125 ~ 0126: Data Structure, Module
@@ -12,7 +13,9 @@
 - 0217 ~ 0219:  String, 패턴매칭(KMP, 보이어-무어)
 - 0222 ~ 0226: Stack(재귀, DP, DFS, 백트랙킹)
 - 0302 ~ 0305: Queue(BFS)
-- 03.08 ~ 04.02 : Django & DB
+- 03.08 ~ 04.02: Django & DB
+- 04.05 ~ 04.06: Algorithm Tree, Heap
+- 04.07 ~ 04.09: Computational Thinking
 
 
 
@@ -34,13 +37,13 @@
 
 ### 데이터베이스
 
-- 
-
 
 
 ### 알고리즘
 
-- 
+BOJ/SWEA/Programmers
+
+- Code/Algorithm
 
 
 

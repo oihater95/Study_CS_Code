@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% block content %}
+  <h1>CREATE PAGE</h1>
+  <hr>
+  <form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit">
+  </form>
+  <hr>
+  <a href="{% url 'community:index' %}">BACK</a>
+{% endblock %}

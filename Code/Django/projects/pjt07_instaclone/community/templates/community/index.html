@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>INDEX PAGE</h1>
+  <hr>
+  <div class="container">
+    <section class="row g-1 row-cols-1 row-cols-sm-2 row-cols-lg-3">
+      
+      {% for review in reviews %}
+        <article class="col">
+          <div class="card" style="width: 24rem;">
+            {% if review.image %}
+            <img src="{{ review.image.url }}" class="card-img-top">
+            {% endif %}
+            
+            <div class="card-body">        
+              <p>게시글 제목: {{ review.title }}</p>
+              <p>작성자: <a href="{% url 'accounts:profile' review.user.pk %}">{{ review.user }}</a></p>
+              <div style="text-align:end">
+                <a href="{% url 'community:detail' review.pk %}">Detail</a>
+              </div>
+            </div>
+          </div>               
+        
+        </article>        
+      {% endfor %}       
+          
+    </section>
+  </div>
+  
+{% endblock %}

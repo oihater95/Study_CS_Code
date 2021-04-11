@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% block content %}
+  <h1>DETAIL PAGE</h1>
+  <hr>
+  <p>글 제목: {{ review.title }}</p>
+  <p>내용: {{ review.content }}</p>
+  <p>
+    {% if review.image %}
+      <img src="{{ review.image.url }}" alt="{{ review.image }}">
+    {% endif %}
+  </p>
+  <p>글 생성 시간: {{ review.created_at }}</p>
+  <p>글 수정 시간: {{ review.updated_at }}</p>
+  <p>작성자: <a href="{% url 'accounts:profile' review.user.pk %}">{{ review.user }}</a></p>
+  <hr>
+  <h4>좋아요 수: {{ review.user_like.all|length }}</h4>
+    <form action="{% url 'community:like' review.pk %}" method="POST">
+      {% csrf_token %}
+      {% if request.user in review.user_like.all %}
+        <button class="btn btn-danger">Dislike</button>
+      {% else %}
+        <button class="btn btn-primary">Like</button>
+      {% endif %}
+    </form>
+  <hr>
+  
+  {% if request.user == review.user %}
+    <a href="{% url 'community:update' review.pk %}" class="btn btn-primary">UPDATE</a>
+    {% comment %} <form action="{% url 'community:delete' reivew.pk %}" method="POST">
+      {% csrf_token %}
+      <button class="btn btn-danger" onclick="return confirm('삭제하시겠습니까?')">DELETE</button>
+    </form> {% endcomment %}
+  {% endif %}
+  <hr>
+  <h4>댓글 목록</h4>
+  <p>{{ comments|length }}개의 댓글이 있습니다.</p>
+  <ul>
+    {% for comment in comments %}
+      <li>{{ comment.user }}님: {{ comment.content }}</li>
+    {% empty %}
+      <p>아직 댓글이 없네요... 댓글을 달아주세요!</p>
+    {% endfor %}
+  </ul>
+  <hr>
+  <form action="{% url 'community:comments_create' review.pk %}" method="POST">
+    {% csrf_token %}
+    {% bootstrap_form comment_form %}
+    <input type="submit">
+  </form>
+  {% if comment.user == request.user %}
+    <form action="{% url 'community:comments_delete' review.pk %}" method="POST">
+    {% csrf_token %}
+    <button class='btn btn-danger'>삭제</button>
+    </form>
+  {% endif %}
+  <a href="{% url 'community:index' %}">BACK</a>
+{% endblock %}

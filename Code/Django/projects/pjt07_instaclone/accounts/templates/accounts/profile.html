@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Profile</h1>
+<p>Name: {{ you.username }}</p>
+<p>팔로잉 수: {{ you.followings.all|length }} | 팔로워 수: {{ you.followers.all|length }}</p>
+<hr>
+<form action="{% url 'accounts:follow' you.pk %}" method="POST">
+  {% csrf_token %}
+  {% if request.user in you.followers.all %}
+    <button class="btn btn-danger">Unfollow</button>
+  {% else %}
+    <button class="btn btn-primary">Follow</button>
+  {% endif %}
+</form>
+
+{% endblock content %}

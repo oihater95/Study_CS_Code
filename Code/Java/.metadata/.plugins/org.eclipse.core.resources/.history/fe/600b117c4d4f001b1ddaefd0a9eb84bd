@@ -1,0 +1,45 @@
+package overloading;
+class Employee {
+	String name;
+	int age;
+	int salary;
+	// 메서드 overloading
+	void setEmployee(String name, int age) {
+		this.name = name;
+		this.age = age;
+	}
+	
+	void setEmployee(String name) {
+		this.name = name;
+	}
+	
+	void setEmployee() {
+		name = "No name";
+		age = 0;
+	}
+	
+	// 생성자 overloading
+	public Employee() { // 기본 생성자
+	}
+	
+	public Employee(String name, int age) {
+		this.name = name;
+		this.age = age;
+	}
+	
+	public Employee(String name, int age, int salary) {
+		this.name = name;
+		this.age = age;
+		this.salary = salary;
+	}
+}
+public class EmployeeTest {
+
+	public static void main(String[] args) {
+		Employee park = new Employee();
+		park.setEmployee("박재성", 28);
+		park.setEmployee();
+
+	}
+
+}

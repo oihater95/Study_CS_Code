@@ -1,0 +1,28 @@
+package reference;
+
+public class CallByReferenceTest {
+
+	public static void main(String[] args) {
+		int[] scoreList = {40, 78, 98}; // change메서드의 scoreList와 동일한 객체 주소 값 가짐
+		// 정수형 배열 scoreList에 정수 3개가 저장된 일차원 배열 객체 생성하여 할당
+		System.out.println("reference address1 : " + scoreList);
+		changeScore(scoreList);
+		
+		System.out.println("변경 전 score : " + scoreList[0]);
+		changeScore2(scoreList);
+		System.out.println("변경 후 score : " + scoreList[0]);
+
+		
+	}
+	
+	private static void changeScore(int[] scoreList) {
+		System.out.println("reference address2 : " + scoreList);
+		// main의 scoreList와 동일한 객체 주소 값 가짐
+	}
+	
+	private static int[] changeScore2(int[] scoreList) {
+		scoreList[0] = 100;
+		System.out.println("변경된 score : " + scoreList[0]);
+		return scoreList;
+	}
+}

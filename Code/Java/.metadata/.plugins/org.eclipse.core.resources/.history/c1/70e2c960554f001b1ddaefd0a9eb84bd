@@ -1,0 +1,14 @@
+package reference;
+
+public class CallByReferenceTest {
+
+	public static void main(String[] args) {
+		int[] scoreList = {40, 78, 98};
+		System.out.println("reference address1 : " + scoreList);
+		changeScore(scoreList);
+	}
+	
+	private static void changeScore(int[] scoreList) {
+		System.out.println("reference address2 : " + scoreList);
+	}
+}

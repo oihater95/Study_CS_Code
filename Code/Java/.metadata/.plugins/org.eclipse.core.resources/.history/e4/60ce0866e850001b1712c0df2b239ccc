@@ -1,0 +1,13 @@
+class Outside {
+	public class Inside {
+		
+	}
+}
+public class InnerClassTest {
+
+	public static void main(String[] args) {
+		Outside outer = new Outside();
+		Outside.Inside inner = outer.new Inside();
+	}
+
+}

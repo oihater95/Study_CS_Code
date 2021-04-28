@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TODO APP</title>
+  <!-- CSS selector => class
+        JS selector => id -->
+</head>
+<body>
+  <h1>My JS Todo app</h1>
+  <form>
+    <input id="todoInput" type="text" name="todo">
+    <button id="addTodoButton">Add Todo</button>
+    <!-- <button id="addTodoButton" onclick="addTodo()">Add Todo</button> => 클릭 시 addTodo실행 -->
+    <!-- button이 form안에 있으면 submit이라 새로고침되어서 li에 안들어감, 
+      button을 form 밖에 쓰고 form action 지우면 정상실행 -->
+    <!-- 또는 form 대신 div태그로 바꾸기 하지만 이러한 방법은 inline 코딩 느낌임 -->
+    <!-- form 태그 사용시 클릭 대신 엔터 입력도 submit됨, div 태그 사용시 엔터는 submit 안됨 -->
+  </form>
+  <ul id="todoList">  <!--id: camelCase-->
+    <li>밥먹기</li>
+    <li>복습하기</li>
+  </ul>
+  <script>
+    // 함수
+    /*
+      Python #1
+      def func_name(arg):
+        logic
+      return value
+
+      Python #2
+      lambda arg: value
+
+      JS #1
+      function funcName(arg) {
+        logic
+        return value
+      }
+
+      JS #2 이름과 로직 분리
+      const funcName = function(arg) {
+        return value
+      }
+
+      JS 와 Python 함수 차이점
+      Python의 경우 함수의 인자 개수 다르면 오류나지만 JS는 오류나지 않음
+    */
+    // JS 함수 #1
+    function addTodo(event) {  // request처럼 event 들어올거라 생각하고 씀
+      // console.log(event)
+      event.preventDefault()
+      // 1. input tag 선택
+      const inputTag = document.querySelector('#todoInput')
+      // 2. input tag의 value 값을 잡는다.
+      const inputData = inputTag.value
+      // 3. 새로운 li 태그 생성
+      const liTag = document.createElement('li')
+      // 4. 3에서 만든 태그의 innerText를 2번 value로 설정
+      liTag.innerText = inputData
+      // 5. 기존 ul 태그 선택
+      const ulTag = document.querySelector('#todoList')
+      // 6. 3에서 만든 li 태그를 5에서 만든 ul 태그의 자식으로 추가
+      ulTag.appendChild(liTag)
+      // 7. input .태그 내용을 지운다.
+      inputTag.value = ""
+      // 함수는 블록 스코프라 함수 실행 끝나고 나면 함수안에서 사용한 const는 재사용 가능
+      // 함수로 안 썼을 때 빈 li가 붙는 이유: 바로 실행되기 때문에 빈 inputData가 들어감
+    }
+
+    // #addTodoButton을 선택
+    const addTodoButton = document.querySelector('#addTodoButton')
+    // #addTodoButton을 클릭하면, addTodo 함수를 실행하도록 설정
+    addTodoButton.addEventListener('click', addTodo)
+    // addTodoButton.addEventListener('click', = #addTodoButton을 클릭하면,
+    // , addTodo) = addTodo 함수를 실행
+    // CONSOLE START HERE
+  </script>
+</body>
+</html>

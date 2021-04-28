@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basic DOM Manipulation</title>
+  <style>
+    #king {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="header">DOM Manipulation</h1>
+  <h2 id="lang-header">Programming Languages</h2>
+  <ul>
+    <li class="lang">Python</li>
+    <li class="lang">Java</li>
+    <li class="lang" id="special-lang">JavaScript</li>
+  </ul>
+
+  <h2 id="frame-header">Frameworks</h2>
+  <ul>
+    <li class="framework" id="special-frame">Django</li>
+    <li class="framework">Spring</li>
+    <li class="framework">Vue.js</li>
+  </ul>
+
+  <script>  // 여기 실행된 부분 개발자 콘솔에서 이어서 사용 가능
+    // JS 변수 convention: 띄어쓰기나 _ 대신 대문자 사용(소문자 시작)
+    document.querySelector('h1')  // DOM Manipulation tag
+    // document.querySelector('#header') === document.querySelector('h1'): true
+
+    // 1. 단일 선택
+    const mainHeader = document.querySelector('#header')  // DOM Manipulation id
+    const langHeader = document.querySelector('#lang-header')
+    const frameHeader = document.querySelector('#frame-header')
+
+    // 2. 복수 선택
+    const langList = document.querySelectorAll('.lang')  // . = class
+    const frameList = document.querySelectorAll('.framework')
+
+    // 조작
+    // Create
+
+    // Read
+
+    // Update
+
+    // Delete
+
+
+    
+  </script>
+</body>
+</html>

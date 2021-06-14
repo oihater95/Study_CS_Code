@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  
+
+  <div class="main row mt-5">
+      <h1 class="col-12 text-center my-5 p-3 fw-bold" style="font-family: 'Pattaya', sans-serif;">Community</h1>
+      <div class="d-flex flex-row-reverse">
+        <a style="font-family: 'Raleway', sans-serif;" class="btn btn-success" href="{% url 'articles:create' %}"><i class="fas fa-user-edit"></i> Write </a>
+      </div>
+      <!-- Sidebar -->
+      <!-- 컨테이너의 너비 1/6 차지 -->
+      <aside class="col-lg-2 mt-3">
+        <!-- list group component -->
+        <ul class="list-group">
+          <a class="text-decoration-none" href="{% url 'movies:index' %}">
+            <li class="list-group-item" style="font-family: 'Raleway', sans-serif;">Movies</li>
+          </a>
+          <a class="text-decoration-none" href="{% url 'movies:genre_index' %}">
+            <li class="list-group-item" style="font-family: 'Raleway', sans-serif;">Genres</li>
+          </a>
+
+        </ul>
+      </aside>
+
+      <!-- Board -->
+      <!-- 컨테이너의 너비 5/6차지 -->
+      <section class="col-lg-10 mt-3 ">
+        <!-- lg미만에서는 none, lg이상에서 나타남 -->
+        <div class="d-none d-lg-block">
+          <table class="table">
+            <thead class="table" style="background-color:#6610f2;">
+              <tr style="color:white">
+                <th scope="col">No.</th>
+                <th scope="col">Title</th>
+                <th scope="col">User</th>
+                <th scope="col">Written At</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for article in pages %}
+                <tr>
+                  <th scope="row">{{ article.pk }}</th>
+                  <td><a href="{% url 'articles:detail' article.pk %}">{{ article.title }}</a></td>
+                  <td>{{ article.user }}</td>
+                  <td>{{ article.created_at }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <!-- lg 이상에서 none -->
+        <div class="d-lg-none">
+          <article>
+            <ul class="list-group list-group-flush">
+              {% for article in pages %}
+                <li class="list-group-item">
+                  <div>
+                    <div class="d-flex justify-content-between">
+                      <p class="fs-4">{{ article.pk }}: {{ article.title }}</p>
+                      <p>{{ article.user }}</p>
+                    </div>
+                    <div>
+                      <p>{{ article.created_at }}</p>
+                    </div>
+                  </div>
+                </li>
+              {% endfor %}
+            </ul>
+          </article>
+        </div>
+      </section>
+    </div>
+    
+  </div>
+
+  <!-- 게시판 탐색기 좌우 정렬-->
+
+  <ul class="paging justify-content-center d-flex" style="list-style: none;">
+    {% if pages.has_previous %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{ pages.previous_page_number }}"> << </a>
+    </li>
+    {% endif %}
+
+    {% if pages.number > page_size|add:"1" %}
+      <li class="page-item">
+        <a href="?page=1" class="page-link"></a>
+      </li>
+      <li class="page-item">
+        <span class="page-link">...</span>
+      </li>
+    {% endif %}
+
+    {% for page_number in page_range %}
+      {% if page_number == pages.number %}
+        <li class="page-item active" aria-current="page">
+          <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+        </li>
+      {% else %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+        </li>
+      {% endif %}
+    {% endfor %}
+
+    {% if pages.number|add:page_size < max_idx %}
+      <li class="page-item">
+        <span class="page-link">...</span>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="?page={{ max_idx }}">{{ max_idx }}</a>
+      </li>
+    {% endif %}
+
+    {% if pages.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="?page-{{ pages.next_page_number }}"> >> </a>
+      </li>
+    {% endif %}
+  </ul>
+
+{% endblock %}

@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% block content %}
+<h1 class="m-3 text-center"><b>{{ movie.title }}</b></h1>
+<section class="container justify-content-center">
+  <div class="row g-4 row">
+    <div class="col-sm-12 col-md-6 col-lg-6 text-center">
+      <img src="{{ movie.poster_path }}" alt="{{ movie.title }}" style="width: 20rem; height:30rem">
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-6">
+      <div class="ml-4 fs-5">{{ movie.overview }} </div>
+      <div class="ml-4 mt-4 mb-1 fs-5"><b>Genre</b></div>
+      <div class="ml-4 fs-5">
+        {% for genre in genres %} {{ genre }} {% endfor %}
+      </div>
+      <div class="ml-4 mt-4 mb-1 fs-5"><b>Average Ratings</b></div>
+      <div class="ml-4 fs-5">{{ avg }}</div>
+      <div class="ml-4 mt-4 mb-1 row fs-5">
+        <div class="col-8 align-self-center fs-5 p-3"><i class="fas fa-thumbs-up" style="color:purple"></i> {{ movie.user_like.all|length }} people like this movie</div>
+        <form action="{% url 'movies:like_from_detail' movie.pk %}" method="POST" class="col-4 align-self-center text-center">
+          {% csrf_token %}
+          {% if request.user in movie.user_like.all %}
+            <button class="btn btn-danger"><i class="fas fa-thumbs-down" style=""></i> Dislike</button>
+          {% else %}
+            <button class="btn btn-primary"><i class="fas fa-thumbs-up" style=""></i> Like</button>
+          {% endif %}
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr>
+<h4 class="text-start"><i class="far fa-comment-alt"></i> {{ rates|length }} 
+  {% if rates|length == 1 %}
+    rating is added 
+  {% else %}
+    ratings are added 
+  {% endif %}
+</h4>
+
+<div class="row">
+  {% for rate in rates %}
+    <div class="text-end col-2">{{ rate.user }}</div>
+
+    <div class="text-center col-6">
+    {% if rate.rating == 0 %}
+      <i class="far fa-star" style="color:purple"></i>
+      <i class="far fa-star" style="color:purple"></i>
+      <i class="far fa-star" style="color:purple"></i>
+      <i class="far fa-star" style="color:purple"></i>
+      <i class="far fa-star" style="color:purple"></i>
+    {% elif rate.rating == 1 %}
+      <i class="fas fa-star" style="color:purple"></i>
+      <i class="far fa-star" style="color:purple"></i>
+      <i class="far fa-star" style="color:purple"></i>
+      <i class="far fa-star" style="color:purple"></i>
+      <i class="far fa-star" style="color:purple"></i>
+    {% elif rate.rating == 2 %}
+      <i class="fas fa-star" style="color:purple"></i>
+      <i class="fas fa-star" style="color:purple"></i>
+      <i class="far fa-star" style="color:purple"></i>
+      <i class="far fa-star" style="color:purple"></i>
+      <i class="far fa-star" style="color:purple"></i>
+    {% elif rate.rating == 3 %}
+      <i class="fas fa-star" style="color:purple"></i>
+      <i class="fas fa-star" style="color:purple"></i>
+      <i class="fas fa-star" style="color:purple"></i>
+      <i class="far fa-star" style="color:purple"></i>
+      <i class="far fa-star" style="color:purple"></i>
+    {% elif rate.rating == 4 %}
+      <i class="fas fa-star" style="color:purple"></i>
+      <i class="fas fa-star" style="color:purple"></i>
+      <i class="fas fa-star" style="color:purple"></i>
+      <i class="fas fa-star" style="color:purple"></i>
+      <i class="far fa-star" style="color:purple"></i>
+    {% else %}
+      <i class="fas fa-star" style="color:purple"></i>
+      <i class="fas fa-star" style="color:purple"></i>
+      <i class="fas fa-star" style="color:purple"></i>
+      <i class="fas fa-star" style="color:purple"></i>
+      <i class="fas fa-star" style="color:purple"></i>
+    {% endif %}
+    {{ rate.rating }}.0/5.0 
+    </div>
+
+    <div class="text-start col-4">
+      {% if rate.user == request.user %}
+      <button class="btn btn-primary d-inline btn-sm" data-bs-toggle="modal" data-bs-target="#UpdateModal"><i class="fas fa-edit"></i> Edit</button>
+      <form class="d-inline" action="{% url 'movies:delete_rate' movie.pk rate.pk %}" method="POST">
+        {% csrf_token %}
+        <button class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i> Delete</button>
+      </form>
+
+    <!--Modal-->
+    <div class="modal fade" id="UpdateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="updateModalLabel">Rating Update</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body">
+            <form action="{% url 'movies:update_rate' movie.pk rate.pk %}" method="POST">
+              {% csrf_token %}
+              {{ rate_form }}
+              <button class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    </div>
+  <br>
+
+  {% empty %}
+    <p>No ratings yet...</p>
+  {% endfor %}
+</div>
+
+  
+<hr>
+{% if request.user in rate_users %}
+  
+{% else %}
+<form action="{% url 'movies:create_rate' movie.pk %}" method="POST">
+  {% csrf_token %}
+  {% bootstrap_form rate_form %}
+  <input type="submit">
+</form>
+{% endif %}
+{% comment %} 
+<a href="{% url 'movies:index' %}">BACK</a> {% endcomment %}
+
+{% endblock %}

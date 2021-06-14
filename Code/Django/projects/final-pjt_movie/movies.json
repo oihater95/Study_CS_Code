@@ -1,0 +1,234 @@
+[
+{
+    "model": "movies.genre",
+    "pk": 1,
+    "fields": {
+        "genre_num": 28,
+        "name": "Action"
+    }
+},
+{
+    "model": "movies.genre",
+    "pk": 2,
+    "fields": {
+        "genre_num": 12,
+        "name": "Adventure"
+    }
+},
+{
+    "model": "movies.genre",
+    "pk": 3,
+    "fields": {
+        "genre_num": 16,
+        "name": "Animation"
+    }
+},
+{
+    "model": "movies.genre",
+    "pk": 4,
+    "fields": {
+        "genre_num": 35,
+        "name": "Comedy"
+    }
+},
+{
+    "model": "movies.genre",
+    "pk": 5,
+    "fields": {
+        "genre_num": 80,
+        "name": "Crime"
+    }
+},
+{
+    "model": "movies.genre",
+    "pk": 6,
+    "fields": {
+        "genre_num": 99,
+        "name": "Documentary"
+    }
+},
+{
+    "model": "movies.genre",
+    "pk": 7,
+    "fields": {
+        "genre_num": 18,
+        "name": "Drama"
+    }
+},
+{
+    "model": "movies.genre",
+    "pk": 8,
+    "fields": {
+        "genre_num": 10751,
+        "name": "Family"
+    }
+},
+{
+    "model": "movies.genre",
+    "pk": 9,
+    "fields": {
+        "genre_num": 14,
+        "name": "Fantasy"
+    }
+},
+{
+    "model": "movies.genre",
+    "pk": 10,
+    "fields": {
+        "genre_num": 36,
+        "name": "History"
+    }
+},
+{
+    "model": "movies.genre",
+    "pk": 11,
+    "fields": {
+        "genre_num": 27,
+        "name": "Horror"
+    }
+},
+{
+    "model": "movies.genre",
+    "pk": 12,
+    "fields": {
+        "genre_num": 10402,
+        "name": "Music"
+    }
+},
+{
+    "model": "movies.genre",
+    "pk": 13,
+    "fields": {
+        "genre_num": 9648,
+        "name": "Mystery"
+    }
+},
+{
+    "model": "movies.genre",
+    "pk": 14,
+    "fields": {
+        "genre_num": 10749,
+        "name": "Romance"
+    }
+},
+{
+    "model": "movies.genre",
+    "pk": 15,
+    "fields": {
+        "genre_num": 878,
+        "name": "Science Fiction"
+    }
+},
+{
+    "model": "movies.genre",
+    "pk": 16,
+    "fields": {
+        "genre_num": 10770,
+        "name": "TV Movie"
+    }
+},
+{
+    "model": "movies.genre",
+    "pk": 17,
+    "fields": {
+        "genre_num": 53,
+        "name": "Thriller"
+    }
+},
+{
+    "model": "movies.genre",
+    "pk": 18,
+    "fields": {
+        "genre_num": 10752,
+        "name": "War"
+    }
+},
+{
+    "model": "movies.genre",
+    "pk": 19,
+    "fields": {
+        "genre_num": 37,
+        "name": "Western"
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 1,
+    "fields": {
+        "title": "Mortal Kombat",
+        "overview": "Washed-up MMA fighter Cole Young, unaware of his heritage, and hunted by Emperor Shang Tsung's best warrior, Sub-Zero, seeks out and trains with Earth's greatest champions as he prepares to stand against the enemies of Outworld in a high stakes battle for the universe.",
+        "poster_path": "https://image.tmdb.org/t/p/w500/nkayOAUBUu4mMvyNf9iHSUiPjF1.jpg",
+        "user_like": [],
+        "genres": [
+            1,
+            2,
+            9
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 2,
+    "fields": {
+        "title": "Tom Clancy's Without Remorse",
+        "overview": "An elite Navy SEAL uncovers an international conspiracy while seeking justice for the murder of his pregnant wife.",
+        "poster_path": "https://image.tmdb.org/t/p/w500/rEm96ib0sPiZBADNKBHKBv5bve9.jpg",
+        "user_like": [],
+        "genres": [
+            1,
+            2,
+            17,
+            18
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 3,
+    "fields": {
+        "title": "Those Who Wish Me Dead",
+        "overview": "A young boy finds himself pursued by two assassins in the Montana wilderness with a survival expert determined to protecting him - and a forest fire threatening to consume them all.",
+        "poster_path": "https://image.tmdb.org/t/p/w500/xCEg6KowNISWvMh8GvPSxtdf9TO.jpg",
+        "user_like": [],
+        "genres": [
+            1,
+            7,
+            13,
+            17
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 4,
+    "fields": {
+        "title": "Godzilla vs. Kong",
+        "overview": "In a time when monsters walk the Earth, humanity¡¯s fight for its future sets Godzilla and Kong on a collision course that will see the two most powerful forces of nature on the planet collide in a spectacular battle for the ages.",
+        "poster_path": "https://image.tmdb.org/t/p/w500/pgqgaUx1cJb5oZQQ5v0tNARCeBp.jpg",
+        "user_like": [],
+        "genres": [
+            1,
+            7,
+            15
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 5,
+    "fields": {
+        "title": "The Unholy",
+        "overview": "Alice, a young hearing-impaired girl who, after a supposed visitation from the Virgin Mary, is inexplicably able to hear, speak and heal the sick. As word spreads and people from near and far flock to witness her miracles, a disgraced journalist hoping to revive his career visits the small New England town to investigate. When terrifying events begin to happen all around, he starts to question if these phenomena are the works of the Virgin Mary or something much more sinister.",
+        "poster_path": "https://image.tmdb.org/t/p/w500/b4gYVcl8pParX8AjkN90iQrWrWO.jpg",
+        "user_like": [],
+        "genres": [
+            11
+        ]
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 6,
+    "fields": {
+        "title": "Nobody",
+        "overview": 

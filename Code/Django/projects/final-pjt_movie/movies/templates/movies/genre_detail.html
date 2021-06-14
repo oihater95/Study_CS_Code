@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Genre{% endblock title %}
+
+{% block content %}
+<h1 class="text-center m-5" style="font-family: 'Pattaya', sans-serif;"> <b>{{ genre }} Movies </b></h1>
+<div class="container mt-5">
+  <section class="row g-3">
+    {% for movie in movies %}
+      <article class="col-sm-6 col-md-4 col-lg-3">
+        <a href="{% url 'movies:detail' movie.pk %}" style="text-decoration:none; color:black">
+          <div class="card h-100">
+              <img src="{{ movie.poster_path }}" class="card-img-top">
+            <div class="card-body">
+              <div class="title-body mb-5">
+                <h5 class="fs-6" style="font-family: 'Raleway', sans-serif;"> {{ movie.title }} </h5>
+              </div>
+              <div class="mt-4" style="position:absolute; bottom:2.7rem; right:0.5rem;">
+                <i class="fas fa-thumbs-up" style="color: purple"></i> {{ movie.user_like.all|length }}
+                <i class="far fa-comment-alt"></i> {{ movie.rate_set.all|length }}
+              </div>
+              <div style="position:absolute; bottom:0.5rem; right:0.5rem;">
+                <a style="background-color:#6610f2; font-family: 'Raleway', sans-serif; color:white" href="{% url 'movies:detail' movie.pk %}" class='btn btn-sm'>Detail</a>
+                <form class="d-inline" action="{% url 'movies:like_from_genre_detail' genre.pk movie.pk %}" method="POST">
+                  {% csrf_token %}
+                  {% if request.user in movie.user_like.all %}
+                    <button class="btn btn-danger btn-sm" style="font-family: 'Raleway', sans-serif;"><i class="fas fa-thumbs-down" style=""></i> Dislike</button>
+                  {% else %}
+                    <button class="btn btn-primary btn-sm" style="font-family: 'Raleway', sans-serif;"><i class="fas fa-thumbs-up" style=""></i> Like</button>
+                  {% endif %}
+                </form>
+              </div>
+            </div>   
+          </div>            
+        </a>
+      </article>        
+    {% endfor %}       
+  </section>
+</div>
+
+{% endblock content %}
+
+
+

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% block content %}
+  <h1 class="text-center m-5" style="font-family: 'Pattaya', sans-serif;"> <b>What's Your Opinion?</b></h1>
+  <form class="m-4 container" method="POST">
+    {% csrf_token %}
+    <div class="row">
+      <div class="col-2 text-end">
+        Title
+      </div>
+      <div class="col-10 mb-3">
+        {{ form.title }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-2 text-end">
+        Content
+      </div>
+      <div class="col-10">
+        {{ form.content}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-11 text-end">
+        <input type="submit" class="btn btn-success">
+      </div>
+        
+    </div>
+    
+  </form>
+  <hr>
+  <a href="{% url 'articles:index' %}"> BACK</a>
+{% endblock %}

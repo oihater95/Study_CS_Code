@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}temp{% endblock title %}
+
+{% block content %}
+  {% for a in associations %}
+    {% if a.lift > 1 %}
+    <div>
+      <p>antecedents: {{ a.antecedents }}</p>
+      <p>consequents: {{ a.consequents }}</p>
+      <p>lift: {{ a.lift }}</p>
+      <br>
+    </div>
+    {% endif %}
+  {% endfor %}
+
+<p>liked_movies: {{ liked_movies }}</p>
+{% endblock content %}

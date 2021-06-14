@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Genres{% endblock title %}
+
+{% block content %}
+<h1 class="text-center m-5" style="font-family: 'Pattaya', sans-serif;"> <b>Genres</b> </h1>
+<div class="container mt-5">
+  <section class="row g-3">
+    {% for genre in genres %}
+      <article class="col-sm-6 col-md-4 col-lg-3">
+        <a href="{% url 'movies:genre_detail' genre.pk %}" style="text-decoration:none; color:black;">
+          <div class="card">
+              <img src="{% get_static_prefix %}{{ genre.pk }}.png " class="card-img-top">
+            <div class="card-body text-center">
+              <div class="title-body">
+                <h5 class="fs-4" style="font-family: 'Raleway', sans-serif;"> {{ genre }} </h5>
+              </div>
+              <div style="font-family: 'Raleway', sans-serif;">
+                TOTAL {{ genre.movie_set.all|length }} movies
+              </div>
+            </div>   
+          </div>            
+        </a>
+      </article>
+    {% endfor %}       
+  </section>
+</div>
+
+{% endblock content %}
+
+
+

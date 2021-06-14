@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% block content %}
+  <h1 class="text-center m-5" style="font-family: 'Pattaya', sans-serif;"> <b>{{ article.title }}</b></h1>
+  <hr>
+  <h4 class="mb-5" style="font-family: 'Raleway', sans-serif;">{{ article.content }}</h4>
+  <p class="text-end"style="font-family: 'Raleway', sans-serif;">Written at: {{ article.created_at }}</p>
+  <p class="text-end" style="font-family: 'Raleway', sans-serif;">Updated at: {{ article.updated_at }}</p>
+  <p class="text-end" style="font-family: 'Raleway', sans-serif;">User: {{ article.user }}</p>
+
+  {% if request.user == article.user %}
+    <a style="" href="{% url 'articles:update' article.pk %}" class="btn btn-primary d-inline"><i class="fas fa-edit"></i> Edit</a>
+    <form class="d-inline" action="{% url 'articles:delete' article.pk %}" method="POST">
+      {% csrf_token %}
+      <button style="" class="btn btn-danger" onclick="return confirm('삭제하시겠습니까?')"><i class="far fa-trash-alt"></i> Delete</button>
+    </form>
+  {% endif %}
+
+  <hr>
+  <h4>Comment</h4>
+  <p>{{ comments|length }} comments.</p>
+  <ul>
+    {% for comment in comments %}
+      <div>
+        <li style="font-family: 'Raleway', sans-serif;" class="d-inline">"{{ comment.user }}": {{ comment.content }}</li>
+
+      {% if comment.user == request.user %}
+        <button style="font-family: 'Raleway', sans-serif;" class="btn btn-primary d-inline btn-sm" data-bs-toggle="modal" data-bs-target="#UpdateModal"><i class="fas fa-edit"></i>Edit</button>
+        
+        <form class="d-inline" action="{% url 'articles:delete_comment' article.pk comment.pk %}" method="POST">
+          {% csrf_token %}
+          <button style="font-family: 'Raleway', sans-serif;" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i>Delete</button>
+        </form>
+
+          <!--Modal-->
+          <div class="modal fade" id="UpdateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="updateModalLabel">Comment Update</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+              <div class="modal-body">
+                <form action="{% url 'articles:update_comment' article.pk comment.pk %}" method="POST">
+                  {% csrf_token %}
+                  {% bootstrap_form comment_form %}
+                  <button class="btn btn-primary btn-sm"><i class="fas fa-edit"></i>Edit</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    <br>
+    <br>
+    {% empty %}
+      <p style="font-family: 'Raleway', sans-serif;">No Comments Yet..!</p>
+    {% endfor %}
+  </ul>
+
+  <hr>
+  <form action="{% url 'articles:create_comment' article.pk %}" method="POST">
+    {% csrf_token %}
+    <p class="d-inline" style="font-family: 'Raleway', sans-serif;">Comment {{ comment_form }}</p>
+    <button style="font-family: 'Raleway', sans-serif;" class="btn btn-success btn-sm"><i class="fas fa-user-edit"></i>Write</button>
+  </form>
+  <a style="font-family: 'Raleway', sans-serif;" href="{% url 'articles:index' %}">BACK</a>
+{% endblock %}

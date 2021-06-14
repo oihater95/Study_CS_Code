@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-md sticky-top p-0" style="background-color: #A0A0FF">
+  <div class="container-fluid align-self-center">
+    <ul class="navbar-nav" style="background-color: #A0A0FF">
+      <li class="nav-item align-self-center">
+        <a class="nav-link" style="color:white;" href="{% url 'movies:index' %}"><i class="fas fa-dragon fa-2x"></i></a>
+      </li>
+      <li class="nav-item align-self-center">
+        <a class="nav-link" style="color:white; font-family: 'Raleway', sans-serif;" href="{% url 'articles:index' %}">Community</a>
+      </li>
+      <li class="nav-item align-self-center">
+        <a class="nav-link" style="color:white; font-family: 'Raleway', sans-serif;" href="{% url 'movies:genre_index' %}">Genres</a>
+      </li>
+      {% if request.user.username == 'admin' %}
+        <li class="nav-item align-self-center">
+          <a class="nav-link" style="color:white; font-family: 'Raleway', sans-serif;" href="http://127.0.0.1:8000/admin/">Adminstration</a>
+        </li>
+      {% endif %}
+
+      {% if request.user.is_authenticated %}
+        <li class="nav-item align-self-center">
+          <a class="nav-link" style="color:white; font-family: 'Raleway', sans-serif;" href="{% url 'movies:recommend2' %}" >Recommend</a>
+        </li>
+      {% endif %}
+
+    </ul>
+
+    <div class="collapse navbar-collapse justify-content-end">
+      <ul class="navbar-nav">
+      {% if request.user.is_authenticated %}
+        <li class="nav-item pt-3" style="color:white">
+          <p style="font-family: 'Raleway', sans-serif;">Welcome {{ request.user }}!</p>
+        </li>
+        <li class="nav-item align-self-center">
+          <form class="nav-link" action="{% url 'accounts:logout' %}" method="POST">
+            {% csrf_token %}
+            <button class="btn btn-danger btn-sm" style="font-family: 'Raleway', sans-serif;"> <i class="fas fa-sign-out-alt"></i> Logout</button>
+          </form>
+        </li>
+      {% else %}
+        <li class="nav-item align-self-center m-1">
+          <a class="nav-link" style="color:white; font-family: 'Raleway', sans-serif;" href="{% url 'accounts:signup' %}">Signup</a>
+        </li>
+        <li class="nav-item align-self-center">
+          <a class="nav-link btn btn-primary btn-sm" style="color:white; font-family: 'Raleway', sans-serif;" href="{% url 'accounts:login' %}"> 
+            <i class="fas fa-sign-in-alt"></i> Login</a>
+        </li>
+      {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,39 @@
+<div id="recommendCarousel" class="carousel slide" data-bs-ride="carousel" style="display:inline-block; text-align:center; width:50rem">
+
+  <div class="carousel-indicators">
+  {% for movie in recommend_movies %}
+    <button type="button" data-bs-target="#recommendCarousel" data-bs-slide-to="{{ forloop.counter }}" 
+      class="active" aria-current="true" aria-label=""></button>
+  {% endfor %}
+  </div>
+
+  <div class="carousel-inner">
+  {% for movie in recommend_movies %}
+    {% if forloop.counter == 1 %}
+      <div class="carousel-item active" style="height: 35rem;">
+        <a href="{% url 'movies:detail' movie.pk %}">
+          <img src="{{ movie.poster_path }}" class="d-block w-100 h-100" alt="{{ movie.title }}">
+        </a>
+        
+      </div>
+    {% else %}
+      <div class="carousel-item" style="height: 35rem;">
+        <a href="{% url 'movies:detail' movie.pk %}">
+          <img src="{{ movie.poster_path }}" class="d-block w-100 h-100" alt="{{ movie.title }}">
+        </a>
+      </div>
+    {% endif %}
+  {% endfor %}
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#recommendCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#recommendCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+
+</div>
+

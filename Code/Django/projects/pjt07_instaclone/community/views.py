@@ -48,7 +48,7 @@ def detail(request, review_pk):
 
 @require_POST
 def delete(request, review_pk):
-    reivew = get_object_or_404(Review, pk=review_pk)
+    review = get_object_or_404(Review, pk=review_pk)
     if request.user.is_authenticated:
         if request.user == review.user:
             review.delete()

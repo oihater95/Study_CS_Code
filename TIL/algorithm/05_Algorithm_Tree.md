@@ -53,7 +53,7 @@
 
 - 높이가 h이고 노드 수가 n개 일 때 (h+1 <= n <= 2^(k+1) - 1) 포**화 이진 트리의 노드 번호 1번부터 n번까지 빈자리가 없는 이진 트리**
 
-  <img src="04_Algorithm_Tree.assets/완전 이진 트리X.png" alt="완전 이진 트리X" style="zoom:60%;" />
+  <img src="05_Algorithm_Tree.assets/완전 이진 트리X.png" alt="완전 이진 트리X" style="zoom:60%;" />
 
 - **왼쪽부터 빈자리를 채워야** 완전 이진 트리, 위의 경우에는 완전 이진 트리가 아니다.
 
@@ -222,7 +222,7 @@ def postorder(n):
 
 - 완전 이진 트리 표현
 
-<img src="04_Algorithm_Tree.assets/완전이진트리_연결리스트.PNG" alt="완전이진트리_연결리스트" style="zoom:67%;" />
+<img src="05_Algorithm_Tree.assets/완전이진트리_연결리스트.PNG" alt="완전이진트리_연결리스트" style="zoom:67%;" />
 
 ## 수식 트리
 

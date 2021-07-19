@@ -270,7 +270,7 @@
 
 #### v-model
 
-- HTML form 요소의 값과 data를 양방향 바인딩
+- HTML form 요소의 값과 data를 양방향 바인딩 => input에서만 사용
 - 수식어
   - . lazy
     - input 대신 change 이벤트 이후에 동기화
@@ -309,7 +309,20 @@
 ### this keyword in Vue.js
 
 - Vue 함수 객체 내에서 vue 인스턴스를 가리킴
-- 단, JS 함수에서의 this 키워드는 다른 언어와 조금 다르게 동작하는 경우 있으니 주의
+- 단, JS 함수에서의 this 키워드는 다른 언어와 조금 다르게 동작하는 경우 있으니 주의 (data에서 this 쓰지말것)
 - 화살표 함수를 사용하면안되는 겨우
   - data
   - method 정의
+
+
+
+### methods vs computed
+
+- computed는 무조건 return 존재
+- methods => 모든 동작 (data setting), 리턴 없는 경우 있음
+- computed => (연산된)data getting
+
+- computed는 연산된 결과 데이터가 필요할 때, 데이터 그대로 필요할 땐 methods
+- computed는 캐싱된 결과를 가져와서 이전에 불러왔던 값이면 속도가 빠르다
+- methods는 실행할때마다 연산
+- computed는 this가 가리키는 data 바뀔 때만 재연산 => computed 사용하려면 내부에 data가 있어야하고 바뀌어야함

@@ -3,7 +3,9 @@
 - 상태 관리 패턴 + 라이브러리 관리
 - 상태를 전역저장소로 관리할 수 있도록 지원하는 라이브러리
   - state가 예측 가능한 방식으로만 변경될 수 있도록 보장하는 규칙 설정
-  - 애플리케이션의 모든 컴포넌트에 대한 중앙 집중식 저장소 역할
+  - 애플리케이션의 모든 컴포넌트에 대한 **중앙 집중식 저장소** 역할
+- 공유된 상태 관리 처리하는데 유용하지만 시작하는 비용 큼
+  - 앱이 단순하다면 Vuex 안쓰는게 더 효율적, 그러나 중대형 규모의 SPA를 구축하는 경우 Vuex는 자연스러운 선택
 
 
 
@@ -62,19 +64,21 @@
 - Actions
 - Mutations
 - Getters
+- 4가지가 store 역할
 
 
 
 ### State
 
 - **중앙에서 관리하는 모든 상태 정보**(**data**)
-- Mutations에 정의된 메서드에 의해 변경
+- **Mutations에 정의된 메서드에 의해 변경**
 - 여러 컴포넌트 내부에 있는 특정 state를 중앙에서 관리
   - 이전 방식은 state를 찾기 위해 각 컴포넌트를 직접 확인
   - Vuex를 활용하는 방식은 Vuex Store에서 컴포넌트에서 사용하는 state를 한 눈에 파악 가능
-- state가 변화하면 해당 state를 공유하는 컴포넌트의 DOM은 알아서 렌더링
+- state가 변화하면 해당 **state를 공유하는 컴포넌트의 DOM은 알아서 렌더링**
 - 컴포넌트는 Vuex Store에서 state 정보를 가져와 사용
-- **dispatch()**를 사용하여 Actions 내부의 메서드를 호출
+- **dispatch()**를 사용하여 Actions 내부의 메서드를 호출 
+  - Component가 dispatch()로 Actions 호출
 
 
 
@@ -108,10 +112,17 @@
 - state를 변경하지 않고 활용하여 계산을 수행 (**computed와 유사**)
   - 실제 계산된 값을 사용하는 것처럼 getters는 **저장소의 상태(state)를 기준으로 계산**
   - 예시: state에 todo list의 해야할 일 목록의 경우 todo가 완료된 목록만 필터링해서 보여줘야 하는 경우
+    - 리스트를 필터링(계산)해서 보여준 것, state가 바뀐 것은 아님
   - getters에서 completed의 값이 true인 요소가 필터링해서 계산된 값을 담아 놓을 수 있음
-- getters 자체가 state 자체를 변경하지 않음 (**실제 상태를 변경하지 않음**)
-  - state를 특정한 조건에 따라 구분(계산)만
+- **getters 자체가 state 자체를 변경하지 않음** (**실제 상태를 변경하지 않음**)
+  - state를 **특정한 조건에 따라 구분(계산)만**
   - 계산된 값을 가져옴
+
+
+
+### Modules
+
+- store 자체가 커져 모듈화 할 때 사용
 
 
 
@@ -128,6 +139,27 @@
 ### mapState
 
 - computed와 state 매핑
+- 객체 전개 연산자
+
+```vue
+<script>
+import { mapState } from 'vuex'
+```
+
+```vue
+<script>
+  computed: {  // 호출해서 사용 X, 계산된 값만 사용하기 때문에 return 필수
+    todos: function() {
+      return this.$store.state.todos
+    }
+  }
+  
+      
+      
+</script>
+```
+
+
 
 
 
@@ -140,3 +172,87 @@
 ### mapActions
 
 - computed와 actions 매핑
+
+
+
+## Example
+
+> Todolist
+
+- Vuex 사용한다고 해서 props를 안쓰는건 아니다
+- Vuex 사용한다고 해서 모든 data를 state에 쓰는건 아니다 => 한 컴포넌트에서만 쓰고 처리하는거면 해당 컴포넌트의 data에 씀
+
+
+
+### 구조
+
+- App: 최상단 컴포넌트
+  - TodoForm: Todo 입력 (App의 하위 컴포넌트)
+  - TodoList: Todo 목록 출력 (App의 하위 컴포넌트)
+    - TodoListItem: TodoList 개별 요소 (TodoList의 하위 컴포넌트)
+
+
+
+### store
+
+- **index.js**에 **state, mutations, actions, getters, modules** 모두 있음
+- devtools에서 Ctrl+2 Base State에서 state 확인 가능
+- state
+  - todos 데이터(배열)
+- mutations
+  - state 변경
+  - actions의 commit에 의해 호출됨
+  - 첫번째 인자로 항상 state받음
+  - methods처럼 작성 but 대문자로 써서 methods와 구분하여 헷갈리지 않게함(권장사항)
+  - this안쓰고 state바로 접근 가능(store내에서는 가능)
+- actions
+  - context를 인자로 받음
+  - context안에 commit 있음 => `context.commit('mutations의 함수', payload)`로 mutations 호출
+- getters
+  - computed와 유사
+  - 첫번째 인자는 state => 상태값을 기준으로 계산하기 때문에
+  - 완료된 todo 개수, 진행중인 todo 개수 => todo 변경 사항이 없다면 미리 계산해두는 게 나음
+
+
+
+### Flow
+
+- 컴포넌트에서 `dispatch`를 활용해 `actions`를 호출
+- `actions`에 정의된 메서드는 `commit`을 활용해 `mutations`를 호출
+- `mutations`에 정의된 메서드는 `state`를 조작한다.
+
+
+
+### TodoList
+
+
+
+### 새로고침해도 데이터 없어지지 않게하기
+
+- createdPersistedState => 브라우저의 로컬스토리지에 저장
+
+- 설치
+
+```bash
+$ npm install --save vuex-persistedstate
+```
+
+
+
+- store index.js
+```vue
+import Vue from 'vue'
+import Vuex from 'vuex'
+import createdPersistedState from 'vuex-persistedstate'
+
+Vue.use(Vuex)
+
+export default new Vuex.Store({
+  plugins: [
+    createdPersistedState(),
+  ],
+  state: {
+    todos: [],
+  }, ...
+```
+

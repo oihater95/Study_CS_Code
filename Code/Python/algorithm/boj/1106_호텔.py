@@ -7,12 +7,12 @@ for i in range(N):
     invest, customer = map(int, input().split())
     infos.append([invest, customer])
 
-for i in range(len(infos)):
-    for j in range(1, len(dp)):
-        if j - infos[i][0] >= 0:
-            dp[j] = max(dp[j], dp[j-infos[i][0]] + infos[i][1])
-
+# dp[i] => i만큼의 돈으로 홍볼 할 수 있는 최대 인원을 각 도시를 돌면서 확인하여 최대값으로 갱신
 for i in range(1, len(dp)):
+    for j in range(N):
+        if infos[j][0] <= i:
+            dp[i] = max(dp[i], dp[i-infos[j][0]] + infos[j][1])
+
     if dp[i] >= C:
         print(i)
         break
